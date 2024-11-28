@@ -19,15 +19,9 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.users.fruth = import ./modules/home.nix;
         }
       ];
-    };
-
-    homeConfigurations.fruth = home-manager.lib.homeManagerConfiguration {
-      system = "x86_64-linux";
-      homeDirectory = "/home/fruth";
-      username = "fruth";
-      configuration = ./modules/home.nix;
     };
   };
 }
