@@ -3,23 +3,31 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    catppuccin.url = "github:catppuccin/nix";
+    
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
-  let
-    system = "x86_64-linux";
-  in
-  {
+  outputs = { self, nixpkgs, home-manager, catppuccin, ... }: {
+
     nixosConfigurations.fruth = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        catppuccin.nixosModules.catppuccin
+
+        ./hosts/configuration.nix
+
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.fruth = import ./modules/home.nix;
+          home-manager.users.fruth.imports = [
+            ./hosts/home.nix
+            catppuccin.homeManagerModules.catppuccin
+          ];
         }
       ];
     };
