@@ -92,7 +92,7 @@
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "backup";
     users = {
-      "fruth" = import ./modules/home.nix;
+      "fruth" = import ./home.nix;
     };
   };
 
@@ -105,10 +105,10 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
    vesktop
    brave
-   vscode
    git
    gh
    fish
+   vscode
   ];
 
   nix.settings.experimental-features = [
