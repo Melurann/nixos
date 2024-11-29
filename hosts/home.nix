@@ -14,7 +14,7 @@
   home.enableNixpkgsReleaseCheck = false;
 
   # Set GTK theme for the user
-  gtk = {
+    gtk = {
     enable = true;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
@@ -25,13 +25,13 @@
       name = "Bibata-Modern-Ice";
     };
 
-    catppuccin = {
+    /*catppuccin = {
       enable = true;
       flavor = "mocha";
       accent = "pink";
       size = "standard";
       tweaks = ["normal"];
-    };
+    };*/
   };
 
   # Ensure Home Manager itself is managed
