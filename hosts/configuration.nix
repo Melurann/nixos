@@ -111,6 +111,7 @@
     gh
     fish
     vscode
+    eza
   ];
 
   nix.settings.experimental-features = [
