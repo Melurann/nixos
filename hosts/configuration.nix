@@ -101,14 +101,21 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-   vesktop
-   brave
-   git
-   gh
-   fish
-   vscode
+  environment.systemPackages = with pkgs; let
+    vscodeWithExtensions = pkgs.vscode-with-extensions.override {
+      vscodeExtensions = with pkgs.vscode-extensions; [
+        github.copilot
+        esbenp.prettier-vscode
+        zhuangtongfa.material-theme
+        jnoortheen.nix-ide
+      ];
+    };
+  in [
+    vscodeWithExtensions
+    git
+    gh
+    fish
+    brave
   ];
 
   nix.settings.experimental-features = [
@@ -140,6 +147,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
-
+  system.stateVersion = "24.05";
 }

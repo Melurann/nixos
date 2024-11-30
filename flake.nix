@@ -15,12 +15,12 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations."default" = nixpkgs.lib.nixosSystem {
+     nixosConfigurations."default" = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/configuration.nix
         inputs.home-manager.nixosModules.home-manager
       ];
-    };
+    }; 
   };
 }
