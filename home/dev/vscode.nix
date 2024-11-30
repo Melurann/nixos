@@ -1,13 +1,19 @@
-{ pkgs, ... }: {
-  programs = {
-    vscode = {
-      enable = true;
-      extensions =
-        with pkgs; [
-          vscode-extensions.ms-vscode.cpptools-extension-pack
-        ];
-      mutableExtensionsDir = true;
-      package = pkgs.vscode;
+{pkgs, ...}: {
+  programs.vscode = {
+    enable = true;
+    userSettings = {
+      "files.autoSave" = "onFocusChange";
+      "editor.formatOnSave" = true;
     };
+
+    extensions = with pkgs.vscode-extensions; [
+      github.copilot
+      esbenp.prettier-vscode
+      zhuangtongfa.material-theme
+      bbenoist.nix
+      kamadorueda.alejandra
+    ];
+    mutableExtensionsDir = true;
+    package = pkgs.vscode;
   };
-} 
+}

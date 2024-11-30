@@ -1,6 +1,6 @@
 {...}: {
-    imports = [
-	    ./dev
-        ./git.nix
-    ];
+  imports = [
+    ./dev
+    ./git.nix
+  ];
 }

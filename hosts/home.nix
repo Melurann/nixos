@@ -1,13 +1,16 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
 
     ../home
   ];
 
- # Home Manager needs a bit of information about you and the paths it should
+  # Home Manager needs a bit of information about you and the paths it should
   home.username = "fruth";
   home.homeDirectory = "/home/fruth";
 
@@ -15,10 +18,10 @@
   targets.genericLinux.enable = true;
   home.activation = {
     linkDesktopApplications = {
-      after = [ "writeBoundary" "createXdgUserDirectories" ];
-      before = [ ];
+      after = ["writeBoundary" "createXdgUserDirectories"];
+      before = [];
       data = '''';
-    };  
+    };
   };
 
   # You should not change this value, even if you update Home Manager.

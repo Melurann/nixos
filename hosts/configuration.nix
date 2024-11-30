@@ -1,25 +1,28 @@
-{ config, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan
-      ./hardware-configuration.nix
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan
+    ./hardware-configuration.nix
 
-      inputs.home-manager.nixosModules.default
-    ];
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Define your hostname
-  networking.hostName = "fruth-nixos"; 
+  networking.hostName = "fruth-nixos";
 
   # Enable networking
   networking.networkmanager.enable = true;
 
   # Enables wireless support via wpa_supplicant
-  # networking.wireless.enable = true; 
+  # networking.wireless.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -82,14 +85,14 @@
   users.users."fruth" = {
     isNormalUser = true;
     description = "Roman Fruth";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     backupFileExtension = "backup";
     users = {
       "fruth" = import ./home.nix;
@@ -102,16 +105,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   vesktop
-   brave
-   git
-   gh
-   fish
-   vscode
+    vesktop
+    brave
+    git
+    gh
+    fish
+    vscode
   ];
 
   nix.settings.experimental-features = [
-  "nix-command" "flakes"
+    "nix-command"
+    "flakes"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
