@@ -4,7 +4,7 @@
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
 
-    ../home/git.nix
+    ../home
   ];
 
  # Home Manager needs a bit of information about you and the paths it should

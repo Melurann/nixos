@@ -1,6 +1,5 @@
 {...}: {
     imports = [
-	    ./dev
-        ./git.nix
+        ./vscode.nix
     ];
 }

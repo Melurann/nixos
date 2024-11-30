@@ -101,21 +101,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; let
-    vscodeWithExtensions = pkgs.vscode-with-extensions.override {
-      vscodeExtensions = with pkgs.vscode-extensions; [
-        github.copilot
-        esbenp.prettier-vscode
-        zhuangtongfa.material-theme
-        jnoortheen.nix-ide
-      ];
-    };
-  in [
-    vscodeWithExtensions
-    git
-    gh
-    fish
-    brave
+  environment.systemPackages = with pkgs; [
+   vesktop
+   brave
+   git
+   gh
+   fish
+   vscode
   ];
 
   nix.settings.experimental-features = [
