@@ -1,7 +1,5 @@
 {
-  config,
-  pkgs,
-  inputs,
+  inputs, pkgs,
   ...
 }: {
   imports = [
@@ -109,6 +107,11 @@
     eza
     jetbrains.datagrip
     jetbrains.idea-ultimate
+    neovim
+    gcc
+    nil
+    alejandra
+    gnumake
   ];
 
   nix.settings.experimental-features = [
