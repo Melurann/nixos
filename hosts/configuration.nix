@@ -113,6 +113,7 @@
     alsa-utils
     pavucontrol
     ripgrep
+    hyprpaper
 
     # apps
     vscode

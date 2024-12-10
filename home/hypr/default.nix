@@ -4,7 +4,7 @@
 }: {
   imports = [
     # ./hyprland-environment.nix
-    # ./hyprpaper.nix
+    ./hyprpaper.nix
     # ./hypridle.nix
     # ./hyprlock.nix
   ];
@@ -92,6 +92,7 @@
       exec-once = [
         "systemctl --user start hyprland-session.target"
         "waybar &"
+        "hyprpaper &"
         "kitty"
       ];
 
