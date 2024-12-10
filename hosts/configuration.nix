@@ -1,5 +1,6 @@
 {
-  inputs, pkgs,
+  inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -41,10 +42,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -98,26 +95,75 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vesktop
-    brave
-    git
-    gh
     fish
     vscode
-    eza
+    neovim
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal
+    wl-clipboard-rs
+    kitty
+    wofi
+    nautilus
+    tmux
+    avizo
+    waybar
     jetbrains.datagrip
     jetbrains.idea-ultimate
-    neovim
+    btop
+    alsa-utils
+    pavucontrol
+    ripgrep
+
+    # apps
+    vscode
+    vesktop
+    brave
+
+    # tools
+    gh
+    git
+    eza
+
+    # lang
     gcc
     nil
     alejandra
     gnumake
   ];
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+  ];
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
 
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    vt = 1;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  };
   system.stateVersion = "24.05";
 }
