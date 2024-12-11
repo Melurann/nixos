@@ -11,22 +11,27 @@
       {
         layer = "top";
         position = "top";
+        /*
+        height = 30;
+        */
+        modules-left = [
+          "custom/rofi"
+          "hyprland/workspaces"
+        ];
+
         modules-center = [
           "custom/weather"
           "clock#date"
         ];
-        modules-left = [
-          "custom/rofi"
-          "hyprland/workspaces"
-          "custom/media"
-        ];
+
         modules-right = [
           "cpu"
           "memory"
-          "custom/storage"
           "temperature"
           "network"
-          "wireplumber"
+          "backlight"
+          "pulseaudio"
+          "battery"
           "tray"
           "custom/wallpaper"
           "custom/notification"
@@ -37,175 +42,6 @@
           format = " ";
           tooltip = false;
         };
-
-        "battery" = {
-          interval = 2;
-          states = {
-            good = 95;
-            warning = 30;
-            critical = 5;
-          };
-          format = "{icon}  {capacity}%";
-          format-plugged = "<span foreground='#3C3836'></span> {capacity}%";
-          format-icons = {
-            default = [
-              "<span foreground='#FB4934'></span>"
-              "<span foreground='#EA6631'></span>"
-              "<span foreground='#DA822D'></span>"
-              "<span foreground='#C99F2A'></span>"
-              "<span foreground='#B8BB26'></span>"
-            ];
-            format-charging = [
-              ""
-              ""
-              ""
-              ""
-              ""
-            ];
-          };
-        };
-
-        "temperature" = {
-          interval = 30;
-          critical-threshold = 80;
-          format-critical = "  {temperatureC}°C";
-          format = "{icon} {temperatureC}°C";
-          format-icons = [
-            "<span foreground='#15161E'></span>"
-            "<span foreground='#15161E'></span>"
-            "<span foreground='#15161E'></span>"
-            "<span foreground='#15161E'></span>"
-          ];
-          max-length = 7;
-          min-length = 7;
-          on-click = "xsensors";
-        };
-
-        "memory" = {
-          interval = 30;
-          format = "  {used}GB";
-          on-click = "kitty -e btop";
-        };
-
-        "network" = {
-          format-wifi = "<span foreground='#15161E'> </span> {essid}";
-          format-ethernet = " {ifname}";
-          format-linked = "{ifname} (No IP) ";
-          format = "";
-          format-disconnected = "<span foreground='#15161E'>󰖪 </span>Disconnected";
-          format-alt = "{ifname}: {ipaddr}/{cidr}";
-          on-click-right = "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)";
-          tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n";
-          tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
-          interval = 10;
-        };
-
-        "backlight" = {
-          device = "intel_backlight";
-          format = "{icon}  {percent}%";
-          format-icons = [
-            "<span foreground='#15161E'>󰃞</span>"
-            "<span foreground='#15161E'>󰃟</span>"
-            "<span foreground='#15161E'>󰃠</span>"
-          ];
-        };
-
-        "custom/storage" = {
-          format = "{icon}  {percentage}%";
-          format-alt = "  {percentage}%";
-          format-alt-click = "click-right";
-          return-type = "json";
-          interval = 60;
-          exec = "~/.config/waybar/modules/storage.sh";
-          on-click = "kitty 'df -h'";
-        };
-
-        "custom/screenshot" = {
-          format = "󰹑";
-          on-click = "sleep 0.1 && grim";
-          tooltip-format = "Screenshot";
-        };
-
-        "custom/color" = {
-          format = "";
-          on-click = "sleep 0.1 && hyprpicker -a";
-          tooltip-format = "Color picker";
-        };
-
-        "idle_inhibitor" = {
-          format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-          tooltip = true;
-        };
-
-        "custom/weather" = {
-          format = "{}";
-          format-alt = "{alt}: {}";
-          format-alt-click = "click-right";
-          interval = 7200;
-          tooltip-format = "Outdoor temperature";
-          exec = "curl -s 'https://wttr.in/?format=1' | tr -s ' '";
-          exec-if = "ping wttr.in -c1";
-        };
-
-        "custom/media" = {
-          format = "{icon} {}";
-          return-type = "json";
-          max-length = 50;
-          format-icons = {
-            spotify_player = "<span foreground='#9ECE6A'></span> ";
-            default = "<span foreground='#BB9AF7'>🎵</span> ";
-          };
-          on-click-right = "playerctl --player=spotify_player play-pause";
-          on-click = "playerctl --player=mpd play-pause";
-          on-scroll-up = "playerctl --player=mpd previous";
-          on-scroll-down = "playerctl --player=mpd next";
-          escape = true;
-          exec-if = "pgrep spotify_player";
-          exec = "$HOME/.config/waybar/modules/mediaplayer.py 2> /dev/null";
-        };
-
-        "custom/power" = {
-          format = "🛑";
-          tooltip = true;
-          tooltip-format = "Power";
-          on-click = "sleep 0.1 && loginctl lock-session && hyprlock";
-        };
-
-        "clock#date" = {
-          format = "<span foreground='#9ECE6A'>🕓</span> {:%H:%M  <span foreground='#9ECE6A'>🗓️</span> %e %b}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          today-format = "<b>{}</b>";
-        };
-
-        "cpu" = {
-          interval = 1;
-          format = "  {usage}%";
-          max-length = 10;
-          min-length = 8;
-          on-click = "kitty -e btop";
-        };
-
-        "tray" = {
-          icon-size = 15;
-          spacing = 5;
-        };
-
-        "custom/wallpaper" = {
-          format = "🎨";
-          on-click = "sleep 0.1 && waypaper --random";
-          on-click-right = "sleep 0.1 && waypaper";
-        };
-
-        "custom/notification" = {
-          format = "🔔";
-          tooltip-format = "Notifications";
-          on-click = "sleep && swaync-client -rs && swaync-client -t";
-        };
-
         "hyprland/workspaces" = {
           all-outputs = true;
           format = "{icon}";
@@ -223,23 +59,67 @@
           };
         };
 
-        "hyprland/window" = {
-          max-length = 100;
-          separate-outputs = true;
+        "custom/weather" = {
+          format = "{}";
+          format-alt = "{alt}: {}";
+          format-alt-click = "click-right";
+          interval = 7200;
+          tooltip-format = "Outdoor temperature";
+          exec = "curl -s 'https://wttr.in/Vienna?format=1' | tr -s ' '";
+          exec-if = "ping wttr.in -c1";
+        };
+        "clock#date" = {
+          format = " {:%H:%M  <span></span> %e %b}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          today-format = "<b>{}</b>";
         };
 
+        "network" = {
+          format-wifi = "  {essid}";
+          format-ethernet = "󰈀{bandwidthDownBits:>}{bandwidthUpBits:>}";
+          format-disconnected = "󰖪  Disconnected";
+          format = "";
+          tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
+          tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
+          tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n";
+          on-click-right = "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)";
+          interval = 10;
+        };
+        "cpu" = {
+          format = "{usage: >3}%";
+          on-click = "kitty -e btop";
+          interval = 1;
+        };
+        "memory" = {
+          format = "  {used}GB";
+          on-click = "kitty -e btop";
+        };
+        "temperature" = {
+          critical-threshold = 80;
+          format-critical = " {temperatureC}°C";
+          format = " {temperatureC}°C";
+          on-click = "kiity -e btop";
+        };
+        "backlight" = {
+          format = "{icon} {percent}%";
+          format-icons = [
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
+        };
         "pulseaudio" = {
           scroll-step = 3;
           format = "{icon}  {volume}% {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
           format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
+          format-muted = "󰝟 {format_source}";
           format-source = "";
           format-source-muted = "";
           format-icons = {
             headphone = "";
-            hands-free = "";
-            headset = "";
+            hands-free = "";
+            headset = "";
             phone = "";
             portable = "";
             car = "";
@@ -252,29 +132,43 @@
           on-click = "sleep 0.1 && pavucontrol";
           on-click-right = "amixer sset Master toggle";
         };
-
-        "wireplumber" = {
-          on-click = "sleep 0.1 && pavucontrol";
-          on-click-right = "amixer sset Master toggle 1>/dev/null";
-          format = "{icon} {volume}%";
-          format-muted = "<span foreground='#15161E'>󰖁 </span>Mute";
-          format-source = "";
-          format-source-muted = " ";
-          format-icons = {
-            headphone = " ";
-            hands-free = " ";
-            headset = " ";
-            phone = " ";
-            portable = " ";
-            car = " ";
-            default = [
-              "<span foreground='#15161E'> </span>"
-              "<span foreground='#15161E'> </span>"
-              "<span foreground='#15161E'> </span>"
-              "<span foreground='#15161E'> </span>"
-              "<span foreground='#15161E'> </span>"
-            ];
+        "battery" = {
+          states = {
+            warning = 30;
+            critical = 15;
           };
+          format = "{icon} {capacity}%";
+          format-charging = "{icon} {capacity}% ";
+          format-plugged = "{icon} {capacity}% ";
+          format-full = "{icon} {capacity}%";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+        };
+
+        "tray" = {
+          icon-size = 15;
+          spacing = 5;
+        };
+        "custom/wallpaper" = {
+          format = "🎨";
+          on-click = "sleep 0.1 && waypaper --random";
+          on-click-right = "sleep 0.1 && waypaper";
+        };
+
+        "custom/notification" = {
+          format = "🔔";
+          tooltip-format = "Notifications";
+          on-click = "sleep && swaync-client -rs && swaync-client -t";
+        };
+        "custom/power" = {
+          format = "⏻";
+          on-click = "sleep 0.1 && loginctl lock-session && hyprlock";
+          tooltip = false;
         };
       }
     ];

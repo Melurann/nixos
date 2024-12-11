@@ -114,6 +114,7 @@
     pavucontrol
     ripgrep
     hyprpaper
+    avizo
 
     # apps
     vscode
