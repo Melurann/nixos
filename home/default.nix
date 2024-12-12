@@ -3,9 +3,10 @@
     ./dev
     ./btop
     ./hypr
-    ./avizo.nix
     ./waybar
     ./git.nix
+    ./gtk.nix
+    ./avizo.nix
     ./vesktop.nix
   ];
 }
