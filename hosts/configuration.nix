@@ -101,6 +101,7 @@
     pavucontrol
     avizo
     btop
+    brightnessctl
     alsa-utils
 
     # File Managers

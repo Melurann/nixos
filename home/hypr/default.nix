@@ -1,19 +1,16 @@
-{
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     # ./hyprland-environment.nix
     ./hyprpaper.nix
     # ./hypridle.nix
-    # ./hyprlock.nix
+    ./hyprlock.nix
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     settings = {
-      monitor = ["eDP-1, 1920x1080@60.02700, 0x0, 1"];  
+      monitor = ["eDP-1, 1920x1080@60.02700, 0x0, 1"];
 
       # ENVIRONMENT VARIABLES
       env = [
@@ -25,7 +22,7 @@
       input = {
         follow_mouse = 1;
         sensitivity = 0;
-        kb_layout = "de";  
+        kb_layout = "de";
         touchpad = {
           natural_scroll = true;
         };
@@ -184,4 +181,3 @@
     '';
   };
 }
-
