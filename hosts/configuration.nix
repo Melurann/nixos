@@ -95,42 +95,49 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    fish
-    vscode
-    neovim
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal
+    ripgrep
     wl-clipboard-rs
-    kitty
-    wofi
-    nautilus
-    tmux
-    avizo
     waybar
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
+    pavucontrol
+    avizo
     btop
     alsa-utils
-    pavucontrol
-    ripgrep
-    hyprpaper
-    avizo
 
-    # apps
-    vscode
-    vesktop
-    brave
+    # File Managers
+    wofi
+    nautilus
 
-    # tools
+    # Terminal
+    kitty
+    fish
+    tmux
+
+    # Tools
     gh
     git
     eza
 
-    # lang
+    # Languages
     gcc
+    gnumake
     nil
     alejandra
-    gnumake
+
+    # Applications
+    vesktop
+    brave
+
+    # Hyprland
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal
+    hyprpaper
+    hyprlock
+
+    # Editors
+    jetbrains.datagrip
+    jetbrains.idea-ultimate
+    vscode
+    neovim
   ];
 
   fonts.packages = with pkgs; [
