@@ -2,7 +2,7 @@
   imports = [
     # ./hyprland-environment.nix
     ./hyprpaper.nix
-    # ./hypridle.nix
+    ./hypridle.nix
     ./hyprlock.nix
   ];
 
@@ -90,6 +90,7 @@
         "systemctl --user start hyprland-session.target"
         "waybar &"
         "hyprpaper &"
+        "hypridle &"
         "brave"
         "kitty"
       ];

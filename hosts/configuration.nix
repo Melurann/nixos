@@ -133,6 +133,7 @@
     xdg-desktop-portal
     hyprpaper
     hyprlock
+    hypridle
 
     # Editors
     jetbrains.datagrip
