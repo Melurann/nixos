@@ -103,6 +103,7 @@
     btop
     brightnessctl
     alsa-utils
+    swaynotificationcenter
 
     # File Managers
     wofi
