@@ -90,6 +90,7 @@
         "systemctl --user start hyprland-session.target"
         "waybar &"
         "hyprpaper &"
+        "brave"
         "kitty"
       ];
 
@@ -169,14 +170,19 @@
 
       windowrulev2 = [
         "suppressevent maximize, class:.*"
+        "workspace 1, class:Brave-browser"
+        "workspace 2, class:kitty"
       ];
 
       windowrule = [
         "float,class:.waypaper-wrapped"
+        "move, 1, class:Brave-browser"
+        "move, 2, class:kitty"
       ];
     };
 
     extraConfig = ''
+
       # additional non-Nix-configurable settings
     '';
   };
