@@ -12,6 +12,8 @@
       github.copilot
       kamadorueda.alejandra
       catppuccin.catppuccin-vsc
+      svelte.svelte-vscode
+      bradlc.vscode-tailwindcss
     ];
     mutableExtensionsDir = false;
     package = pkgs.vscode;
