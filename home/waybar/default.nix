@@ -47,8 +47,8 @@
           format = "{icon}";
           format-icons = {
             active = "";
-            default = " ";
-            urgent = " ";
+            default = "";
+            urgent = "";
           };
           on-scroll-up = "hyprctl dispatch workspace e+1 1>/dev/null";
           on-scroll-down = "hyprctl dispatch workspace e-1 1>/dev/null";
