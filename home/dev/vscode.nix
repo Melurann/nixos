@@ -14,6 +14,7 @@
       catppuccin.catppuccin-vsc
       svelte.svelte-vscode
       bradlc.vscode-tailwindcss
+      vscodevim.vim
     ];
     mutableExtensionsDir = false;
     package = pkgs.vscode;
