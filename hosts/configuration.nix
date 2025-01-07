@@ -137,6 +137,7 @@
     hypridle
 
     # Editors
+    jetbrains-toolbox
     jetbrains.datagrip
     jetbrains.idea-ultimate
     vscode
