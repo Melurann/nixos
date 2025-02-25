@@ -6,6 +6,7 @@
       "files.autoSave" = "onFocusChange";
       "editor.formatOnSave" = true;
       "workbench.colorTheme" = "Catppuccin Mocha";
+      "workbench.editor.editorActionsLocation" = "hidden";
     };
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
