@@ -103,6 +103,8 @@
     btop
     brightnessctl
     alsa-utils
+    grimblast
+    swappy
     swaynotificationcenter
 
     # File Managers

@@ -8,6 +8,7 @@
     ./git.nix
     ./gtk.nix
     ./avizo.nix
+    ./grimblast.nix
     ./vesktop.nix
   ];
 }
