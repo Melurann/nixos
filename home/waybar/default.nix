@@ -78,12 +78,12 @@
           format-wifi = "  {essid}";
           format-ethernet = "󰈀{bandwidthDownBits:>}{bandwidthUpBits:>}";
           format-disconnected = "󰖪  Disconnected";
+          format-disabled = "<big>✈</big> Offline";
           format = "";
           tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
           tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
           tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n";
           on-click-right = "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)";
-          interval = 10;
         };
         "cpu" = {
           format = "{usage: >3}%";
