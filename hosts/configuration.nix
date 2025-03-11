@@ -111,6 +111,7 @@
     swappy
     swaynotificationcenter
     blueman
+    networkmanagerapplet
 
     # File Managers
     wofi
