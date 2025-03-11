@@ -68,6 +68,10 @@
     #media-session.enable = true;
   };
 
+  # Enable Bluetooth support.
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -106,6 +110,7 @@
     grimblast
     swappy
     swaynotificationcenter
+    blueman
 
     # File Managers
     wofi
