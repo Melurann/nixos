@@ -8,6 +8,7 @@
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.editor.editorActionsLocation" = "hidden";
       "workbench.tree.indent" = 20;
+      "workbench.iconTheme" = "material-icon-theme";
     };
 
     extensions = with pkgs.vscode-extensions; [
@@ -18,6 +19,7 @@
       svelte.svelte-vscode
       bradlc.vscode-tailwindcss
       vscodevim.vim
+      pkief.material-icon-theme
 
       (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
         mktplcRef = {
