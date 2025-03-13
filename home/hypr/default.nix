@@ -35,7 +35,7 @@
       general = {
         gaps_in = 2;
         gaps_out = 2;
-        border_size = 2;
+        border_size = 1;
         "col.active_border" = "0xaae2e2e3";
         "col.inactive_border" = "0xaa414550";
         resize_on_border = false;
