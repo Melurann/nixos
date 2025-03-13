@@ -1,251 +1,234 @@
-* {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "FantasqueSansM Nerd Font";
-    font-size: 9.5pt;
-    font-weight: 900;
-    transition-property: background-color;
-    transition-duration: 0.5s;
-    padding: 0px;
-    margin: 0px;
-    border-radius: 3px;
+/* You can't use variables or Nested rules :( */
+/* Define custom colors this approach workes, even tho everything is red */
+@define-color bar #1a1b26;
+@define-color background #222;
+@define-color border #4f4f4f;
+@define-color text #c0caf5;
+@define-color hover #808080;
+@define-color active #808080;
+@define-color urgent #ce7e00;
+@define-color warning #ff0000;
 
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 12px;
+    min-height: 15px;
+    background: transparent;
 }
 
-/* Reset all styles */
-* {
-    border: none;
-    border-radius: 3px;
-    min-height: 0;
-    margin: 0.2em 0.3em 0.2em 0.3em;
+tooltip {
+    border: 1px solid @border;
+    background-color: @background;
 }
 
-/* The whole bar */
+tooltip label {
+    color: @text;
+}
+
 #waybar {
-    background-color: rgba(26, 27, 38, 0.8);
-    color: #414868;
+    background-color: @bar;
+    opacity: 0.8;
     transition-property: background-color;
     transition-duration: 0.5s;
     border-top: 3px transparent;
-    border-radius: 3px;
+    border-radius: 0px 0px 10px 10px;
     margin: 0px 0px;
+
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+#custom-menu {
+    margin: 2px 4px;
+    border-radius: 6px;
+    padding: 0px 12px 0px 8px;
+    margin-left: 0px;
+    font-size: 15px;
+    color: @text;
+    /* background: @background; */
+    /* border: 1px solid @border; */
+    background-image: url('/home/fruth/nixos/home/waybar/NixOS.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#workspaces {
+    margin: 2px 4px;
+    border-radius: 6px;
+    padding: 1px;
+    background: @background;
+    border: 1px solid @border;
 }
 
 #workspaces button {
-    padding: 0 0px;
-    color: #A9B1D6;
-    background-color: transparent;
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 3px transparent;
-    /* Avoid rounded borders under each workspace name */
+    min-width: 20px;
+    box-shadow: none;
+    margin: 2px 3px;
+    text-shadow: none;
     border: none;
-    border-radius: 0;
-}
-
-#workspaces button.focused {
-    background-color: transparent;
-}
-
-#workspace button.hover {
-    background-color: transparent;
+    border-radius: 3px;
+    background: @background;
+    color: @text;
+    transition: all 0.1s linear;
 }
 
 #workspaces button.active {
-    color: #9ECE6A;
+    min-width: 28px;
+    transition: all 0.1s linear;
+    color: @text;
+    background: @active;
+}
+
+#workspaces button:hover {
+    background: @hover;
+    border: none;
 }
 
 #workspaces button.urgent {
-    color: #ffff60;
+    background: @urgent;
 }
 
-#window {
-    /* border-radius: 20px; */
-    /* padding-left: 10px; */
-    /* padding-right: 10px; */
-    color: #9ECE6A;
-}
-
-/* Each module */
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#tray,
-#idle_inhibitor,
-#bluetooth,
-#custom-hyprPicker,
-#custom-power,
-#custom-spotify,
-#custom-weather,
-#custom-weather.severe,
-#custom-weather.sunnyDay,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.default,
-#custom-rofi,
-#custom-notification {
-    padding: 0px 11px;
-    color: #E0AF68;
-    border-radius: 20px;
-    background-color: rgba(26, 27, 38, 0);
-}
-
-#window,
-#workspaces {
-    border-radius: 20px;
-    padding: 0px 10px;
-    background-color: #414868;
-}
-
-#custom-wallpaper {
-    color: #7AA2F7;
-    background-color: rgba(26, 27, 38, 0);
-    padding: 0px 10px;
-    border-radius: 20px;
-}
-
-#custom-rofi {
-    background-color: rgba(20, 27, 30, 0.0);
-    color: #83A598;
+#taskbar {
+    margin: 2px 4px;
+    padding: 0px;
+    margin-left: 0px;
+    background: transparent;
+    border: none;
     font-size: 15px;
-    background-image: url("/home/cjg/Downloads/archLogo.png");
-    background-size: 30px 30px;
-    background-repeat: no-repeat;
-    background-position: center;
+    font-weight: bolder;
 }
 
-tooltip,
-#clock.calendar,
-#clock tooltip,
-#clock>tooltip,
+#taskbar.empty {
+    border: 0px;
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+}
+
+#taskbar button {
+    padding: 0px 3px;
+    margin-right: 2px;
+    border-radius: 6px;
+    border: none;
+}
+
+#taskbar button:hover {
+    background: @hover;
+}
+
+#taskbar button.active {
+    background: @active;
+}
+
 #clock {
-    background: rgba(59, 66, 68, 0.8);
+    margin: 2px 4px;
+    padding: 0px 8px 0px 8px;
+    border-radius: 6px;
+    color: @text;
+    background: @background;
+    border: 1px solid @border;
 }
 
 #custom-weather {
-    color: #C0CAF5;
-    background-color: #414868;
+    margin: 2px 4px;
+    border-radius: 6px;
+    padding: 0px 9px 0px 8px;
+    color: @text;
+    background: @background;
+    border: 1px solid @border;
 }
 
-#custom-weather.severe {
-    color: #eb937d;
-}
-
-#custom-weather.sunnyDay {
-    color: #c2ca76;
-}
-
-#custom-weather.clearNight {
-    color: #cad3f5;
-    background-color: #414868;
-}
-
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight {
-    color: #c2ddda;
-    background-color: #414868;
-}
-
-#custom-weather.rainyDay,
-#custom-weather.rainyNight {
-    color: #5aaca5;
-    background-color: #414868;
-}
-
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight {
-    color: #d6e7e5;
-    background-color: #414868;
-}
-
-#custom-weather.default {
-    color: #FBF1C7;
-    background-color: #414868;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
-}
-
-#network {
-    color: #81a1c1;
-    background-color: #414868;
-}
-
-#network.disabled,
-#network.disconnected {
-    color: #bf616a;
-}
-
-#cpu {
-    color: #b48ead;
-    background-color: #414868;
-}
-
-#temperature {
-    color: #8fbcbb;
-    background-color: #414868;
-}
-
-#temperature.critical {
-    color: #bf616a;
-}
-
-#memory {
-    color: #a3be8c;
-    background-color: #414868;
-}
-
-#idle_inhibitor {
-    color: #81a1c1;
-    background-color: #414868;
-}
-
-#backlight {
-    color: #ebcb8b;
-    background-color: #414868;
+#pulseaudio,
+#backlight,
+#bluetooth,
+#network,
+#battery {
+    border: 1px solid @border;
 }
 
 #pulseaudio {
-    color: #b48ead;
-    background-color: #414868;
+    margin: 2px 0px 2px 4px;
+    padding: 0px 8px 0px 8px;
+    border-radius: 6px 0px 0px 6px;
+    border-right: none;
+    color: @text;
+    background: @background;
+}
+
+#pulseaudio:hover {
+    color: @hover;
+}
+
+#backlight {
+    margin: 2px 0px;
+    border-radius: 0px;
+    border-right: none;
+    border-left: none;
+    padding: 0px 12px 0px 8px;
+    color: @text;
+    background: @background;
+}
+
+#backlight:hover {
+    color: @hover;
+}
+
+#bluetooth {
+    margin: 2px 0px;
+    padding: 0px 8px 0px 4px;
+    border-radius: 0px;
+    border-right: none;
+    border-left: none;
+    color: @text;
+    background: @background;
+}
+
+#bluetooth:hover {
+    color: @hover;
+}
+
+#network {
+    margin: 2px 0px;
+    padding: 0px 12px 0px 8px;
+    border-radius: 0px;
+    border-right: none;
+    border-left: none;
+    color: @text;
+    background: @background;
+}
+
+#network:hover {
+    color: @hover;
 }
 
 #battery {
-    color: #81a1c1;
-    background-color: #414868;
+    margin: 2px 4px 2px 0px;
+    padding: 0px 10px 0px 6px;
+    border-radius: 0px 6px 6px 0px;
+    border-left: none;
+    color: @text;
+    background: @background;
+}
+
+#battery:hover {
+    color: @hover;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @text;
 }
 
 @keyframes blink {
     to {
-        color: #4c566a;
-        background-color: #eceff4;
+        color: @warning;
     }
 }
 
 #battery.critical:not(.charging) {
-    background: #bf616a;
-    color: #eceff4;
+    color: @warning;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -253,68 +236,35 @@ tooltip,
     animation-direction: alternate;
 }
 
-#clock {
-    color: #C0CAF5;
-    background-color: #414868;
+#custom-wallpaper {
+    margin: 2px 4px;
+    margin-right: 0px;
+    padding: 0px 10px 0px 8px;
+    color: @text;
 }
 
-#custom-media {
-    background-color: #414868;
-    color: #C0CAF5;
-    min-width: 100px;
+#custom-wallpaper:hover {
+    color: @hover;
 }
 
-#custom-media.custom-spotify {
-    color: #8ccf7e;
-    background-color: #414868;
+#custom-notification {
+    margin: 2px 4px;
+    margin-right: 0px;
+    padding: 0px 10px 0px 8px;
+    color: @text;
 }
 
-#custom-media.custom-vlc {
-    background-color: #ffa000;
+#custom-notification:hover {
+    color: @hover;
 }
 
-#tray {
-    background-color: #414868;
+#custom-power {
+    margin: 2px 4px;
+    margin-right: 0px;
+    padding: 0px 10px 0px 8px;
+    color: @text;
 }
 
-#tray>.passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#custom-color {
-    background-color: #414868;
-    color: #D79921;
-    padding-left: 10px;
-    padding-right: 15px;
-    border-radius: 3px;
-}
-
-#idle_inhibitor {
-    background-color: #414868;
-    color: #FBF1C7;
-}
-
-#idle_inhibitor.activated {
-    background-color: #FBF1C7;
-    color: #2d3436;
-}
-
-#wireplumber {
-    background-color: #7DCFFF;
-    color: #15161E;
-}
-
-
-window#waybar .horizontal {
-    padding: 1px;
-}
-
-window#waybar {
-    border-radius: 10px;
-    border: 2px solid #A9B1D6;
+#custom-power:hover {
+    color: @hover;
 }

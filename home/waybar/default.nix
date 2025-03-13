@@ -11,104 +11,72 @@
       {
         layer = "top";
         position = "top";
-        /*
         height = 30;
-        */
+
         modules-left = [
-          "custom/rofi"
+          "custom/menu"
           "hyprland/workspaces"
+          "wlr/taskbar"
         ];
 
         modules-center = [
-          "custom/weather"
-          "clock#date"
+          "clock"
         ];
 
         modules-right = [
-          "cpu"
-          "memory"
-          "temperature"
-          "network"
-          "backlight"
+          "custom/weather"
+
           "pulseaudio"
+          "backlight"
+          "bluetooth"
+          "network"
           "battery"
-          "tray"
+
+          # "tray"
           "custom/wallpaper"
           "custom/notification"
           "custom/power"
         ];
 
-        "custom/rofi" = {
-          format = " ";
+        "custom/menu" = {
+          format = "    "; # Use NixOS logo
+          on-click = "wofi --show drun -I -m -i";
           tooltip = false;
         };
+
         "hyprland/workspaces" = {
-          all-outputs = true;
           format = "{icon}";
-          format-icons = {
-            active = "";
-            default = "";
-            urgent = "";
-          };
+          active-only = false;
+          all-outputs = true;
+          on-click = "hyprctl dispatch workspace {name}";
           on-scroll-up = "hyprctl dispatch workspace e+1 1>/dev/null";
           on-scroll-down = "hyprctl dispatch workspace e-1 1>/dev/null";
-          sort-by-number = true;
-          active-only = false;
           persistent-workspaces = {
-            "*" = 4;
+            "*" = 3;
           };
+        };
+
+        "wlr/taskbar" = {
+          format = "{icon}";
+          icon-size = 18;
+          spacing = 5;
+          tooltip-format = "{title}";
+          on-click = "activate";
+          on-click-middle = "close";
+        };
+
+        "clock" = {
+          format = "<b>{:%I:%M %p - %a.%d.%b}</b>";
+          tooltip = false;
         };
 
         "custom/weather" = {
           format = "{}";
-          format-alt = "{alt}: {}";
-          format-alt-click = "click-right";
           interval = 7200;
-          tooltip-format = "Outdoor temperature";
-          exec = "curl -s 'https://wttr.in/Vienna?format=1' | tr -s ' '";
-          exec-if = "ping wttr.in -c1";
-        };
-        "clock#date" = {
-          format = " {:%H:%M  <span></span> %e %b}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          today-format = "<b>{}</b>";
+          exec = "curl -s 'https://wttr.in/kalsdorf?format=1' | tr -s ' '";
+          tooltip = false;
         };
 
-        "network" = {
-          format-wifi = "  {essid}";
-          format-ethernet = "󰈀{bandwidthDownBits:>}{bandwidthUpBits:>}";
-          format-disconnected = "󰖪  Disconnected";
-          format-disabled = "<big>✈</big> Offline";
-          format = "";
-          tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
-          tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
-          tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n";
-          on-click-right = "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)";
-        };
-        "cpu" = {
-          format = "{usage: >3}%";
-          on-click = "kitty -e btop";
-          interval = 1;
-        };
-        "memory" = {
-          format = "  {used}GB";
-          on-click = "kitty -e btop";
-        };
-        "temperature" = {
-          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-          critical-threshold = 80;
-          format-critical = " {temperatureC}°C";
-          format = " {temperatureC}°C";
-          on-click = "kitty -e btop";
-        };
-        "backlight" = {
-          format = "{icon} {percent}%";
-          format-icons = [
-            "󰃞"
-            "󰃟"
-            "󰃠"
-          ];
-        };
         "pulseaudio" = {
           scroll-step = 3;
           format = "{icon}  {volume}% {format_source}";
@@ -132,29 +100,75 @@
           };
           on-click = "sleep 0.1 && pavucontrol";
           on-click-right = "amixer sset Master toggle";
+          tooltip = false;
         };
-        "battery" = {
-          states = {
-            warning = 30;
-            critical = 5;
-          };
-          format = "{icon} {capacity}%";
-          format-charging = "{icon} {capacity}% ";
-          format-plugged = "{icon} {capacity}% ";
-          format-full = "{icon} {capacity}%";
+
+        "backlight" = {
+          format = "{icon} {percent}%";
           format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
+          tooltip = false;
+        };
+
+        "bluetooth" = {
+          format = "󰂯";
+          format-disabled = "󰂲";
+          format-connected = " {device_alias}";
+          format-off = "󰂲";
+          interval = 30;
+          on-click = "blueman-manager";
+          on-click-right = "sleep 0.1 && kill -9 $pgrep blueman-applet";
+          tooltip-format = "{status}";
+        };
+
+        "network" = {
+          format = "{ifname}";
+          format-wifi = "";
+          format-wifi-alt = "  {essid}";
+          format-ethernet = "󰈀{bandwidthDownBits:>}{bandwidthUpBits:>}";
+          format-disconnected = "󰖪  Disconnected";
+          format-disabled = "  Offline";
+          tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
+          tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
+          tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n";
+          max-length = 20;
+          on-click = "sleep 0.1 && nm-connection-editor";
+        };
+
+        "battery" = {
+          format = "{icon} {capacity}%";
+          format-alt = "{icon}";
+          format-charging = " {capacity}%";
+          format-plugged = " {capacity}%";
+          interval = 1;
+          states = {
+            warning = 20;
+            critical = 4;
+          };
+          format-icons = [
+            "󰂎"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
           ];
         };
 
         "tray" = {
           icon-size = 15;
           spacing = 5;
+          show-passive-items = false;
         };
+
         "custom/wallpaper" = {
           format = "🎨";
           on-click = "sleep 0.1 && waypaper --random";
@@ -166,8 +180,9 @@
           tooltip-format = "Notifications";
           on-click = "sleep 0.1 && swaync-client -rs && swaync-client -t";
         };
+
         "custom/power" = {
-          format = "⏻";
+          format = "⏻ ";
           on-click = "sleep 0.1 && loginctl lock-session && hyprlock";
           tooltip = false;
         };
