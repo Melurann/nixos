@@ -1,6 +1,7 @@
 /* You can't use variables or Nested rules :( */
 /* Define custom colors this approach workes, even tho everything is red */
 @define-color bar #1a1b26;
+@define-color barBorder #e2e2e3;
 @define-color background #222;
 @define-color border #4f4f4f;
 @define-color text #c0caf5;
@@ -33,7 +34,7 @@ tooltip label {
     opacity: 0.8;
     transition-property: background-color;
     transition-duration: 0.5s;
-    border-top: 3px transparent;
+    border: 1px solid @barBorder;
     border-radius: 0px 0px 10px 10px;
     margin: 0px 0px;
 
