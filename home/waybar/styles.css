@@ -141,6 +141,15 @@ tooltip label {
     border: 1px solid @border;
 }
 
+#memory {
+    margin: 2px 4px;
+    padding: 0px 8px 0px 8px;
+    border-radius: 6px;
+    color: @text;
+    background: @background;
+    border: 1px solid @border;
+}
+
 #pulseaudio,
 #backlight,
 #bluetooth,

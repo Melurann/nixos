@@ -26,6 +26,8 @@
         modules-right = [
           "custom/weather"
 
+          "memory"
+
           "pulseaudio"
           "backlight"
           "bluetooth"
@@ -75,6 +77,11 @@
           interval = 7200;
           exec = "curl -s 'https://wttr.in/kalsdorf?format=1' | tr -s ' '";
           tooltip = false;
+        };
+
+        "memory" = {
+          format = "  {used}GB";
+          on-click = "kitty -e btop";
         };
 
         "pulseaudio" = {
