@@ -113,6 +113,7 @@
     swaynotificationcenter
     blueman
     networkmanagerapplet
+    prismlauncher
 
     # File Managers
     wofi
