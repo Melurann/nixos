@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./vscode.nix
+    ./vscode/vscode.nix
     ./jetbrains.nix
     ./nvim.nix
   ];
