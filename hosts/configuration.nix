@@ -80,11 +80,13 @@
   users.users."fruth" = {
     isNormalUser = true;
     description = "Roman Fruth";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       #  thunderbird
     ];
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
@@ -114,6 +116,7 @@
     blueman
     networkmanagerapplet
     prismlauncher
+    docker
 
     # File Managers
     wofi
