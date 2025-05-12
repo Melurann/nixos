@@ -117,6 +117,7 @@
     networkmanagerapplet
     prismlauncher
     docker
+    gimp
 
     # File Managers
     wofi
