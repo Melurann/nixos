@@ -119,6 +119,7 @@
     docker
     gimp
     ciscoPacketTracer8
+    minicom
 
     # File Managers
     wofi
