@@ -118,6 +118,7 @@
     prismlauncher
     docker
     gimp
+    ciscoPacketTracer8
 
     # File Managers
     wofi
