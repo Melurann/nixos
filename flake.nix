@@ -15,11 +15,7 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: {
+  outputs = {nixpkgs, ...} @ inputs: {
     nixosConfigurations.fruroa = nixpkgs.lib.nixosSystem {
       system = "x86-64-linux";
       specialArgs = {inherit inputs;};
