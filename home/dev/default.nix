@@ -1,7 +1,9 @@
-{...}: {
+_: {
   imports = [
-    ./vscode/vscode.nix
-    ./jetbrains.nix
-    ./nvim.nix
+    ./nvim
+    ./ghostty.nix
+    ./direnv.nix
+    ./shells
+    ./tmux.nix
   ];
 }

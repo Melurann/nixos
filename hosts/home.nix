@@ -1,53 +1,18 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+_: {
   imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
-
     ../home
   ];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  home.username = "fruth";
-  home.homeDirectory = "/home/fruth";
+  home.username = "fruroa";
+  home.homeDirectory = "/home/fruroa";
+  home.stateVersion = "25.05";
 
-  # This value determines the Home Manager release that your configuration is
-  targets.genericLinux.enable = true;
-  home.activation = {
-    linkDesktopApplications = {
-      after = ["writeBoundary" "createXdgUserDirectories"];
-      before = [];
-      data = '''';
-    };
-  };
+  programs.git.enable = true;
 
-  # You should not change this value, even if you update Home Manager.
-  home.stateVersion = "24.05";
-
-  # Set global font configurations
-  fonts.fontconfig = {
+  programs.bash = {
     enable = true;
-    defaultFonts = {
-      monospace = ["Hack nerd Font"];
-      sansSerif = ["Hack nerd Font"];
-      serif = ["Hack nerd Font"];
+    shellAliases = {
+      san = "echo sanity check o.O";
     };
-  };
-
-  # Let Home Manager install and manage itself.
-  programs = {
-      home-manager.enable = true;
-
-      direnv = {
-        enable = true;
-        nix-direnv.enable = true;
-
-        enableZshIntegration = true;
-        enableBashIntegration = true;
-        enableNushellIntegration = true;
-      };
   };
 }

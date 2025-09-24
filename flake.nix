@@ -1,18 +1,11 @@
 {
-  description = "Nixos config flake";
-
+  description = "NixOS basic flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nixpkgs.url = "nixpkgs/nixos-25.05";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    catppuccin = {
-      url = "github:catppuccin/nix";
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -27,11 +20,20 @@
     nixpkgs,
     ...
   } @ inputs: {
-    nixosConfigurations."default" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.fruroa = nixpkgs.lib.nixosSystem {
+      system = "x86-64-linux";
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/configuration.nix
         inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.fruroa = import ./hosts/home.nix;
+            backupFileExtension = "backup";
+          };
+        }
       ];
     };
   };

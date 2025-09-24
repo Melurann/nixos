@@ -1,14 +1,8 @@
-{...}: {
+_: {
   imports = [
     ./dev
-    ./btop
-    ./hypr
-    ./waybar
-    ./swaync
+    ./apps
+    ./wayland
     ./git.nix
-    ./gtk.nix
-    ./avizo.nix
-    ./grimblast.nix
-    ./vesktop.nix
   ];
 }

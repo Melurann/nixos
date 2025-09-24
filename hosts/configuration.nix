@@ -4,186 +4,32 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
-    ../system
-
     inputs.home-manager.nixosModules.default
+
+    ./hardware-configuration.nix
+    ../nixos
+    ../modules
   ];
 
-  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Define your hostname
-  networking.hostName = "fruth-nixos";
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Enables wireless support via wpa_supplicant
-  # networking.wireless.enable = true;
-
-  # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "de_AT.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_AT.UTF-8";
-    LC_IDENTIFICATION = "de_AT.UTF-8";
-    LC_MEASUREMENT = "de_AT.UTF-8";
-    LC_MONETARY = "de_AT.UTF-8";
-    LC_NAME = "de_AT.UTF-8";
-    LC_NUMERIC = "de_AT.UTF-8";
-    LC_PAPER = "de_AT.UTF-8";
-    LC_TELEPHONE = "de_AT.UTF-8";
-    LC_TIME = "de_AT.UTF-8";
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "at";
-    variant = "";
-  };
-
-  console.keyMap = "de";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable Bluetooth support.
-  services.blueman.enable = true;
-  hardware.bluetooth.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."fruth" = {
+  users.users.fruroa = {
     isNormalUser = true;
-    description = "Roman Fruth";
-    extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
+    extraGroups = ["wheel" "input"];
   };
 
-  security.sudo.wheelNeedsPassword = false;
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    backupFileExtension = "backup";
-    users = {
-      "fruth" = import ./home.nix;
-    };
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    ripgrep
     wl-clipboard-rs
-    waybar
-    pavucontrol
-    avizo
-    btop
-    brightnessctl
-    alsa-utils
-    grimblast
-    swappy
-    swaynotificationcenter
-    blueman
-    networkmanagerapplet
-    prismlauncher
-    docker
-    gimp
-    ciscoPacketTracer8
-    minicom
-
-    # File Managers
-    wofi
-    nautilus
-
-    # Terminal
-    kitty
-    fish
-    tmux
-
-    # Tools
-    gh
-    git
-    eza
-
-    # Languages
-    gcc
-    gnumake
-    nil
-    alejandra
-
-    # Applications
-    vesktop
-    brave
-
-    # Hyprland
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal
-    hyprpaper
-    hyprlock
-    hypridle
-
-    # Editors
-    jetbrains-toolbox
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
-    vscode
-    neovim
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
   ];
 
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  };
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  systemd.services.greetd.serviceConfig = {
-    Type = "idle";
-    StandardInput = "tty";
-    StandardOutput = "tty";
-    StandardError = "journal"; # Without this errors will spam on screen
-    TTYReset = true;
-    TTYVHangup = true;
-    TTYVTDisallocate = true;
   };
 
   services.greetd = {
@@ -196,5 +42,6 @@
       };
     };
   };
-  system.stateVersion = "24.05";
+
+  system.stateVersion = "25.05";
 }
