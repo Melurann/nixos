@@ -15,7 +15,7 @@ jobs:
             install_url: https://nixos.org/nix/install
             extra_nix_config: |
               auto-optimise-store = true
-              experimental-features = nix-commands flakes
+              experimental-features = nix-command flakes
         - run: nix run nixpkgs#alejandra -- -c .
 
   lint:
@@ -30,7 +30,7 @@ jobs:
             install_url: https://nixos.org/nix/install
             extra_nix_config: |
               auto-optimise-store = true
-              experimental-features = nix-commands flakes
+              experimental-features = nix-command flakes
         - run: nix flake check
         - name: deadnix check
           run: nix run github:astro/deadnix -f
