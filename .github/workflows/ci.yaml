@@ -33,4 +33,4 @@ jobs:
               experimental-features = nix-command flakes
         - run: nix flake check
         - name: deadnix check
-          run: nix run github:astro/deadnix -f
+          run: nix run github:astro/deadnix -- -f
