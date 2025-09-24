@@ -13,7 +13,7 @@ jobs:
         - uses: cachix/install-nix-action@v17
           with:
             install_url: https://nixos.org/nix/install
-            extra_config: |
+            extra_nix_config: |
               auto-optimise-store = true
               experimental-features = nix-commands flakes
         - run: nix run nixpkgs#alejandra -- -c .
@@ -28,9 +28,9 @@ jobs:
         - uses: cachix/install-nix-action@v17
           with:
             install_url: https://nixos.org/nix/install
-            extra_config: |
+            extra_nix_config: |
               auto-optimise-store = true
               experimental-features = nix-commands flakes
         - run: nix flake check
         - name: deadnix check
-          run: nix run github:astro/deadnix
+          run: nix run github:astro/deadnix -f
