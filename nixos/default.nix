@@ -3,5 +3,6 @@ _: {
     ./system
     ./customization
     ./hardware
+    ./container
   ];
 }
