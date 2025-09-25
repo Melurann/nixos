@@ -3,7 +3,7 @@ name: bump flake.lock
 on:
   schedule:
     # https://jasonet.co/posts/scheduled-actions/#the-cron-syntax
-    - cron: 0 5 * * 1 # 6:00 UTC+2
+    - cron: "*/2 * * * *" # every 2 min
 
 permissions:
   contents: write
