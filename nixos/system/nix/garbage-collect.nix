@@ -4,7 +4,7 @@ _: {
   nix = {
     gc = {
       automatic = true;
-      # interval.Weekday = 7;
+      dates = "weekly";
       options = "--delete-older-than 7d";
     };
 
