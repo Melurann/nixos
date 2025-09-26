@@ -11,7 +11,7 @@
 #custom-menu {
   background: #383c4a;
   border-radius: 10px;
-  padding: 4px 8px 4px 12px; }
+  padding: 4px 14px 4px 12px; }
 
 #workspaces {
   margin: 0 8px;
@@ -50,13 +50,15 @@
 #pulseaudio,
 #battery,
 #memory,
-#backlight {
+#backlight,
+#custom-power {
   padding: 4px 8px;
   border-radius: 10px;
   background: #383c4a; }
 
 #battery,
-#memory {
+#memory,
+#custom-power {
   margin: 0 8px; }
 
 #network {

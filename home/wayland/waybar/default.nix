@@ -29,6 +29,7 @@ _: {
           "custom/bitrate"
           "memory"
           "backlight"
+          "custom/power"
         ];
 
         # module settings
@@ -144,6 +145,12 @@ _: {
             "󰃟"
             "󰃠"
           ];
+          tooltip = false;
+        };
+
+        "custom/power" = {
+          format = "󰐥";
+          on-click = "sleep 0.1 && loginctl lock-session && hyprlock";
           tooltip = false;
         };
       }

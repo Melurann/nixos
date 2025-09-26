@@ -19,7 +19,7 @@
   #custom-menu {
     background: $bg;
     border-radius: $radius;
-    padding: 4px 8px 4px 12px;
+    padding: 4px 14px 4px 12px;
   }
 
   #workspaces {
@@ -74,14 +74,16 @@
   #pulseaudio,
   #battery,
   #memory,
-  #backlight {
+  #backlight,
+  #custom-power {
     padding: 4px 8px;
     border-radius: $radius;
     background: $bg;
   }
 
   #battery,
-  #memory {
+  #memory,
+  #custom-power {
     margin: 0 8px;
   }
 
