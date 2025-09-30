@@ -13,14 +13,14 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.blacklistedKernelModules = ["kvm" "kvm_intel" "kvm_amd"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   time.timeZone = "Europe/Vienna";
 
   users.users.fruroa = {
     isNormalUser = true;
-    extraGroups = ["wheel" "input"];
+    extraGroups = ["wheel" "input" "vboxusers"];
   };
 
   environment.systemPackages = with pkgs; [
