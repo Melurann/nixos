@@ -15,13 +15,17 @@
     };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
     nixosConfigurations.fruroa = nixpkgs.lib.nixosSystem {
       system = "x86-64-linux";
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/configuration.nix
-        inputs.home-manager.nixosModules.home-manager
+        home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
