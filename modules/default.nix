@@ -3,5 +3,6 @@ _: {
     ./dev.nix
     ./apps.nix
     ./languages.nix
+    ./essentials.nix
   ];
 }
