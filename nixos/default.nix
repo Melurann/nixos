@@ -4,5 +4,6 @@ _: {
     ./customization
     ./hardware
     ./container
+    ./security
   ];
 }
