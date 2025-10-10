@@ -24,5 +24,8 @@
       lua-language-server
       sqls
       yaml-language-server
+      gopls
+      pyright
+      vscode-eslint-language-server
     ];
 }
