@@ -52,7 +52,6 @@ return {
                 eslint = {
                     cmd = { "vscode-eslint-language-server", "--stdio", "--max-old-space-size=12288" },
                 },
-                typescript_language_server = {},
                 html = {},
                 jsonls = {},
                 lua_ls = {
