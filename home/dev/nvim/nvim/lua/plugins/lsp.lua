@@ -83,7 +83,7 @@ return {
                         },
                     },
                 },
-                sqlls = {},
+                sqls = {},
                 tailwindcss = {},
                 ts_ls = {},
                 yamlls = {},
