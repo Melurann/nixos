@@ -1,21 +1,28 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    gcc
-    gnumake
-    rustup
-    go_1_24
-    air
-    nodejs
-    yarn
-    python313
-    nil
-    alejandra
-    bash-language-server
-    typescript-language-server
-    tailwindcss-language-server
-    lua-language-server
-    vscode-langservers-extracted
-    marksman
-    yaml-language-server
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      gcc
+      gnumake
+      rustup
+      go_1_24
+      air
+      nodejs
+      yarn
+      python313
+      alejandra
+    ]
+    ++ [
+      zls
+      rust-analyzer
+      tinymist
+      nil
+      bash-language-server
+      vscode-langservers-extracted
+      typescript-language-server
+      tailwindcss-language-server
+      marksman
+      lua-language-server
+      sqls
+      yaml-language-server
+    ];
 }
