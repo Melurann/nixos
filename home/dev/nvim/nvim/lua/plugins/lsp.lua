@@ -2,7 +2,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPost" },
-        cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+        cmd = { "LspInfo" },
         dependencies = {
             -- Install lsp autocompletions
             "hrsh7th/cmp-nvim-lsp",
