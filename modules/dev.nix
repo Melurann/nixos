@@ -35,5 +35,6 @@
     neovim
     yazi
     zellij
+    minicom
   ];
 }
