@@ -37,5 +37,9 @@
     yazi
     zellij
     minicom
+
+    # gui
+    jetbrains.rider
+    jetbrains.idea-ultimate
   ];
 }
