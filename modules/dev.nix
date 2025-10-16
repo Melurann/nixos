@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # tools
+    wireguard-tools
     eza
     oh-my-zsh
     zsh
