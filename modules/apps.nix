@@ -6,7 +6,6 @@
     brave
     ghostty
     nautilus
-    wireguard-ui
 
     # waybar
     waybar
