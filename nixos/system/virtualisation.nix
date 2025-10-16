@@ -9,7 +9,7 @@ _: {
       };
 
       guest = {
-        enable = true;
+        enable = false;
         dragAndDrop = true;
         seamless = true;
         clipboard = true;
