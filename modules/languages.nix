@@ -26,6 +26,5 @@
       yaml-language-server
       gopls
       pyright
-      vscode-eslint-language-server
     ];
 }
