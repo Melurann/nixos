@@ -21,7 +21,7 @@
     ...
   } @ inputs: {
     nixosConfigurations.fruroa = nixpkgs.lib.nixosSystem {
-      system = "x86-64-linux";
+      system = "x86_64-linux";
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/configuration.nix
