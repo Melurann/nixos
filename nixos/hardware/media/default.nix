@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./network
-    ./media
+    ./pipewire.nix
   ];
 }
