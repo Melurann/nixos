@@ -3,5 +3,7 @@
     grimblast
     swappy
     wl-clipboard-rs
+    pulseaudio
+    alsa-utils
   ];
 }

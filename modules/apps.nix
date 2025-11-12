@@ -9,6 +9,7 @@
 
     # waybar
     waybar
+    pavucontrol
 
     # hypr
     wofi
