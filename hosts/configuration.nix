@@ -20,7 +20,7 @@
 
   users.users.fruroa = {
     isNormalUser = true;
-    extraGroups = ["wheel" "input" "vboxusers"];
+    extraGroups = ["wheel" "input" "vboxusers" "docker"];
   };
 
   programs.hyprland = {
