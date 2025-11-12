@@ -96,7 +96,6 @@ _: {
 
         "battery" = {
           format = "{icon} {capacity}%";
-          format-alt = "{icon}";
           format-charging = " {capacity}%";
           format-plugged = " {capacity}%";
           states = {
