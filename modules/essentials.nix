@@ -5,5 +5,6 @@
     wl-clipboard-rs
     pulseaudio
     alsa-utils
+    avizo
   ];
 }
