@@ -51,6 +51,7 @@
 #battery,
 #memory,
 #backlight,
+#custom-notification,
 #custom-power {
   padding: 4px 8px;
   border-radius: 10px;
@@ -58,7 +59,7 @@
 
 #battery,
 #memory,
-#custom-power {
+#custom-notification {
   margin: 0 8px; }
 
 #network {

@@ -29,6 +29,7 @@ _: {
           "custom/bitrate"
           "memory"
           "backlight"
+          "custom/notification"
           "custom/power"
         ];
 
@@ -144,6 +145,12 @@ _: {
             "󰃟"
             "󰃠"
           ];
+          tooltip = false;
+        };
+
+        "custom/notification" = {
+          format = "󰂚";
+          on-click = "sleep 0.1 && swaync-client -rs && swaync-client -t";
           tooltip = false;
         };
 

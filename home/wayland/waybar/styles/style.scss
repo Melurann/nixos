@@ -75,6 +75,7 @@
   #battery,
   #memory,
   #backlight,
+  #custom-notification,
   #custom-power {
     padding: 4px 8px;
     border-radius: $radius;
@@ -83,7 +84,7 @@
 
   #battery,
   #memory,
-  #custom-power {
+  #custom-notification {
     margin: 0 8px;
   }
 
