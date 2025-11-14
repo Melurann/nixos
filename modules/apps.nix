@@ -6,6 +6,9 @@
     brave
     ghostty
     nautilus
+    wireshark
+    ghidra
+    burpsuite
 
     # waybar
     waybar
