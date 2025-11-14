@@ -3,6 +3,7 @@ _: {
     ./wofi
     ./hypr
     ./waybar
+    ./swaync
     ./avizo.nix
     ./grimblast.nix
   ];
