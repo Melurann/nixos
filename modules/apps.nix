@@ -10,6 +10,7 @@
     # waybar
     waybar
     pavucontrol
+    swaynotificationcenter
 
     # hypr
     wofi
