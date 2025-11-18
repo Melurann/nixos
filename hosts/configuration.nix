@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  user,
   ...
 }: {
   imports = [
@@ -18,7 +19,7 @@
 
   time.timeZone = "Europe/Vienna";
 
-  users.users.fruroa = {
+  users.users.${user.name} = {
     isNormalUser = true;
     extraGroups = ["wheel" "input" "vboxusers" "docker"];
   };
