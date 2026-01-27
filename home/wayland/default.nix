@@ -5,6 +5,7 @@ _: {
     ./waybar
     ./swaync
     ./avizo.nix
+    ./nautilus.nix
     ./grimblast.nix
   ];
 }
