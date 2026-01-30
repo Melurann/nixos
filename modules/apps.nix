@@ -9,11 +9,15 @@
     wireshark
     ghidra
     burpsuite
+    _1password-gui
+    spotify
+    gimp
 
     # waybar
     waybar
     pavucontrol
     swaynotificationcenter
+    networkmanagerapplet
 
     # hypr
     wofi
