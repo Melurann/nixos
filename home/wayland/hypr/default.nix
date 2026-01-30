@@ -1,4 +1,8 @@
-_: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hyprpaper.nix
     ./hypridle.nix
@@ -106,15 +110,29 @@ _: {
 
       bind = [
         # Launch Applications
-        "$mainMod, SPACE, exec,  wofi --show drun -I -m -i"
-        "$mainMod SHIFT, N, exec, swaync-client -rs"
-        "$mainMod SHIFT, C, exec, exit"
-        "$mainMod, Q, exec, ghostty"
+        "$mainMod, E, exec, ${lib.getExe pkgs.wofi} --show drun -I"
+        "$mainMod SHIFT, E, exec, ${lib.getExe pkgs.wofi} --show=run"
+        "$mainMod SHIFT, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
+        "$mainMod, Q, exec, ${lib.getExe pkgs.ghostty}"
+        "$mainMod, B, exec, ${lib.getExe pkgs.brave}"
+        "$mainMod, D, exec, ${lib.getExe pkgs.vesktop}"
+        "$mainMod, F, exec, ${lib.getExe pkgs.nautilus}"
+        "$mainMod, S, exec, ${lib.getExe pkgs.spotify}"
+        "$mainMod, P, exec, ${lib.getExe pkgs._1password-gui}"
+
+        "$mainMod, V, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-mute   @DEFAULT_SINK@ toggle"
+        "$mainMod, U, exec, ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+        "$mainMod, A, exec, ${lib.getExe pkgs.pavucontrol}"
+
+        "$mainMod SHIFT, B, exec, ${pkgs.blueman}/bin/blueman-manager"
+        "$mainMod, W, exec, ${pkgs.networkmanagerapplet}/bin/nm-connection-editor"
+
+        "$mainMod SHIFT, C, exec, pidof ${lib.getExe pkgs.hyprlock} || ${lib.getExe pkgs.hyprlock}"
         "$mainMod, C, killactive"
 
         # Window Management
-        "$mainMod, P, pseudo"
-        "$mainMod SHIFT, I, togglesplit"
+        "$mainMod, SHIFT P, pseudo"
+        "$mainMod, T, togglesplit"
         "$mainMod, M, fullscreen, 1"
         "$mainMod SHIFT, M, fullscreen, 0"
 
