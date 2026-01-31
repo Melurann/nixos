@@ -16,8 +16,10 @@
       "$fileManager" = "nautilus";
 
       monitor = [
-        "eDP-1, 1920x1080@60.02700, 0x0, 1"
-        "HDMI-A-1, 1280x800@59.81000, 1920x0, 1"
+        "eDP-1, 1920x1080@60.03, 0x0, 1" # builtin
+        "HDMI-A-1, preferred, auto, 1" # fallback
+
+        "desc: Acer Technologies VG240Y TG5EE0018524, 1920x1080@74.97, 1920x0, 1"
       ];
 
       # ENVIRONMENT VARIABLES
