@@ -1,5 +1,9 @@
 _: {
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ${../../../wallpapers/nixos.png}
-    wallpaper = , ${../../../wallpapers/nixos.png} '';
+    wallpaper {
+        monitor =
+        path = ${../../../wallpapers/nixos.png}
+        fit_mode = cover
+    }
+  '';
 }

@@ -13,8 +13,6 @@
     enable = true;
     systemd.enable = true;
     settings = {
-      "$fileManager" = "nautilus";
-
       monitor = [
         "eDP-1, 1920x1080@60.03, 0x0, 1" # builtin
         "HDMI-A-1, preferred, auto, 1" # fallback
@@ -89,13 +87,13 @@
       };
 
       misc = {
-        force_default_wallpaper = -1;
-        disable_hyprland_logo = false;
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = true;
       };
 
-      gestures = {
-        workspace_swipe = true;
-      };
+      gesture = [
+        "3, horizontal, workspace"
+      ];
 
       # AUTOSTART
       exec-once = [
@@ -195,16 +193,12 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      windowrulev2 = [
-        "suppressevent maximize, class:.*"
-        "workspace 1, class:Brave-browser"
-        "workspace 2, class:ghostty"
-      ];
-
       windowrule = [
-        "float,class:.waypaper-wrapped"
-        "move, 1, class:Brave-browser"
-        "move, 2, class:ghostty"
+        # Ignore maximize requests from all apps
+        "match:class .*, suppress_event maximize"
+
+        "match:class Brave-browser, workspace 1"
+        "match:class ghostty, workspace 2"
       ];
     };
 
