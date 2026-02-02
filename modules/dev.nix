@@ -41,6 +41,6 @@
 
     # gui
     jetbrains.rider
-    jetbrains.idea-ultimate
+    jetbrains.idea
   ];
 }

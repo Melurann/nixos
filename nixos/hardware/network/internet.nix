@@ -1,8 +1,8 @@
 # <https://wiki.nixos.org/wiki/Networking>
-_: {
+{meta, ...}: {
   networking = {
     useDHCP = false;
-    hostName = "fujitsu-nixos";
+    hostName = meta.hostname;
 
     # Issue with DNS resolution (/etc/resolv.conf)
     resolvconf.dnsExtensionMechanism = false;
@@ -18,11 +18,6 @@ _: {
         powersave = false;
         scanRandMacAddress = true;
       };
-    };
-
-    wireless = {
-      enable = false;
-      userControlled.enable = true;
     };
 
     nameservers = [

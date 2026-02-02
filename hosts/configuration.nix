@@ -29,16 +29,5 @@
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
-  services.greetd = {
-    enable = true;
-    vt = 1;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
-        user = "greeter";
-      };
-    };
-  };
-
   system.stateVersion = "25.05";
 }

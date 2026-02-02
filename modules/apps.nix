@@ -12,6 +12,7 @@
     _1password-gui
     spotify
     gimp
+    # ciscoPacketTracer9
 
     # waybar
     waybar
