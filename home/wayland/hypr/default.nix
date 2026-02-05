@@ -12,6 +12,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+
     settings = {
       monitor = [
         "eDP-1, 1920x1080@60.03, 0x0, 1" # builtin
@@ -97,7 +98,6 @@
 
       # AUTOSTART
       exec-once = [
-        "systemctl --user start hyprland-session.target"
         "waybar &"
         "hyprpaper &"
         "hypridle &"
