@@ -5,5 +5,6 @@ _: {
     ./direnv.nix
     ./shells
     ./tmux.nix
+    ./jetbrains.nix
   ];
 }
