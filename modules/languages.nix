@@ -12,7 +12,7 @@
       alejandra
     ]
     ++ [
-      zls
+      # zls
       rust-analyzer
       tinymist
       nil
