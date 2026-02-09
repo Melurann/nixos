@@ -1,25 +1,28 @@
 #<https://wiki.nixos.org/wiki/PipeWire>
 _: {
-  services.pulseaudio.enable = false;
-
   # use the realtime scheduler for increased performance
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
 
-    alsa = {
+  services = {
+    pulseaudio.enable = false;
+
+    pipewire = {
       enable = true;
-      support32Bit = false;
-    };
+      pulse.enable = true;
+      wireplumber.enable = true;
 
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 32;
-        "default.clock.min-quantum" = 32;
-        "default.clock.max-quantum" = 32;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+
+      extraConfig.pipewire."92-low-latency" = {
+        "context.properties" = {
+          "default.clock.rate" = 48000;
+          "default.clock.quantum" = 256;
+          "default.clock.min-quantum" = 256;
+          "default.clock.max-quantum" = 512;
+        };
       };
     };
   };
