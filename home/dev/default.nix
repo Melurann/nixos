@@ -6,5 +6,6 @@ _: {
     ./shells
     ./tmux.nix
     ./jetbrains.nix
+    ./vscode.nix
   ];
 }

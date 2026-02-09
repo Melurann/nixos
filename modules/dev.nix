@@ -40,6 +40,7 @@
     minicom
 
     # gui
+    vscode
     jetbrains.rider
     jetbrains.idea
   ];
