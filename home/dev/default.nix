@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./nvim
     ./shells
     ./editors
     ./terminals
