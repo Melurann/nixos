@@ -3,7 +3,6 @@ _: {
     ./dev
     ./apps
     ./wayland
-    ./git.nix
     ./gtk.nix
   ];
 }

@@ -1,11 +1,12 @@
 _: {
   imports = [
     ./nvim
-    ./ghostty.nix
-    ./direnv.nix
     ./shells
+    ./git.nix
     ./tmux.nix
-    ./jetbrains.nix
+    ./direnv.nix
     ./vscode.nix
+    ./ghostty.nix
+    ./jetbrains.nix
   ];
 }
