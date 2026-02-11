@@ -4,5 +4,6 @@ _: {
     ./apps
     ./wayland
     ./git.nix
+    ./gtk.nix
   ];
 }
