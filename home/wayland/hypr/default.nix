@@ -23,11 +23,6 @@
 
       # ENVIRONMENT VARIABLES
       env = [
-        "XCURSOR_THEME,Bibata-Modern-Ice"
-        "XCURSOR_SIZE,24"
-
-        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
-        "HYPRCURSOR_SIZE,24"
       ];
 
       # INPUT
@@ -47,8 +42,8 @@
         gaps_in = 2;
         gaps_out = 2;
         border_size = 1;
-        "col.active_border" = "0xaae2e2e3";
-        "col.inactive_border" = "0xaa414550";
+        "col.active_border" = lib.mkDefault "0xaa7287fd";
+        "col.inactive_border" = lib.mkDefault "0xaa414550";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";

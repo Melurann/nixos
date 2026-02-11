@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./cursor.nix
+    ./stylix.nix
     ./font.nix
     ./xdg.nix
   ];

@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   programs.hyprlock = {
     enable = true;
 
@@ -19,7 +19,7 @@ _: {
         disable_loading_bar = true;
       };
 
-      input-field = {
+      input-field = lib.mkForce {
         monitor = "eDP-1"; # todo: change via variable to main monitor
         size = "250, 60";
         dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8

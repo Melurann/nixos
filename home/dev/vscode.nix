@@ -8,7 +8,7 @@
         "editor.formatOnSave" = true;
         "nasm.outputFormat" = "elf64";
 
-        "workbench.colorTheme" = "Catppuccin Mocha";
+        # "workbench.colorTheme" = "Catppuccin Mocha";
         "workbench.editor.editorActionsLocation" = "hidden";
         "workbench.tree.indent" = 20;
         "workbench.iconTheme" = "material-icon-theme";

@@ -14,6 +14,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,19 +33,20 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
+    stylix,
     ...
   }: let
-    # ------------------------------------
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
+    lib = import ./lib {inherit inputs pkgs;};
+
     # Global user
-    # ------------------------------------
     user = {
       name = "fruroa";
       homeDir = "/home/fruroa";
     };
 
-    # ------------------------------------
     # Hosts
-    # ------------------------------------
     hosts = [
       {
         name = "fujitsu-laptop";
@@ -48,6 +54,7 @@
           os = "linux";
           desktop = "wayland";
         };
+        theme = lib.getTheme "catppuccin-mocha";
         monitors = [
           {
             name = "HDMI-A-1";
@@ -62,26 +69,27 @@
       }
     ];
 
-    # ------------------------------------
     # build each host
-    # ------------------------------------
     forLinuxHosts = host: {
       name = host.name;
       value = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
+
         specialArgs = {
           inherit inputs;
+
           meta = {
             hostname = host.name;
             system = host.system;
             monitors = host.monitors;
+            theme = host.theme;
           };
-          user = user;
+
+          inherit user;
         };
 
         modules = [
-          ./hosts/configuration.nix
-
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -92,10 +100,12 @@
               extraSpecialArgs = {
                 inherit inputs;
                 meta = host;
-                user = user;
+                inherit user;
               };
             };
           }
+
+          ./hosts/configuration.nix
         ];
       };
     };
