@@ -16,7 +16,7 @@
 
     # Not needed on X11
     # Both -wlr and -hyprland installed at once will cause conflicts: <https://wiki.hyprland.org/Useful-Utilities/Hyprland-desktop-portal>
-    wlr.enable = true;
+    wlr.enable = false;
   };
 
   xdg.terminal-exec = {
