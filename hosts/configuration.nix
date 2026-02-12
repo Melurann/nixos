@@ -22,6 +22,9 @@
   users.users.${user.name} = {
     isNormalUser = true;
     extraGroups = ["wheel" "input" "vboxusers" "docker"];
+
+    shell = pkgs.zsh;
+    ignoreShellProgramCheck = true; # home-manager enables the shell
   };
 
   programs.hyprland = {
