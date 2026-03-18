@@ -20,7 +20,7 @@
     git
     zoxide
     bat
-    neofetch
+    fastfetch
     delta
     ffmpeg
     sass

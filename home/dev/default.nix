@@ -7,5 +7,6 @@ _: {
     ./git.nix
     ./tmux.nix
     ./direnv.nix
+    ./fastfetch.nix
   ];
 }
