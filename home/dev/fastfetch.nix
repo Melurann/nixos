@@ -95,7 +95,7 @@
           }
           {
             type = "memory";
-            key = " ╰─  ";
+            key = " ├─  ";
             keyColor = "blue";
           }
           {
