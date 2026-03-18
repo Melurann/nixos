@@ -12,10 +12,11 @@
       alejandra
     ]
     ++ [
-      # zls
+      zls
       rust-analyzer
       tinymist
       nil
+      nixd
       bash-language-server
       vscode-langservers-extracted
       typescript-language-server

@@ -44,13 +44,48 @@ return {
             local servers = {
                 -- LSP Servers
                 rust_analyzer = {},
-                tinymist = {},
+                -- zls = {
+                --     on_attach = on_attach,
+                --     cmd = { "zls" },
+                --     filetypes = { "zig", "zir" },
+                --     root_dir = require("lspconfig.util").root_pattern("zls.json", "build.zig", ".git"),
+                --     single_file_support = true,
+                -- },
+                -- roslyn = {},
                 clangd = {},
                 gopls = {},
+                nixd = {
+                    settings = {
+                        nixd = {
+                            formatting = {
+                                command = { "alejandra" },
+                            },
+                        },
+                    },
+
+                },
                 bashls = {},
                 cssls = {},
                 eslint = {
-                    cmd = { "vscode-eslint-language-server", "--stdio", "--max-old-space-size=12288" },
+                    cmd = { "vscode-eslint-language-server", "--stdio" },
+                    settings = {
+                        format = true,                            -- Ensure ESLint can handle formatting
+                        workingDirectory = { mode = "location" }, -- Use the working directory where `eslint.config.js` resides
+                    },
+                    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+                    root_dir = function(fname)
+                        return require("lspconfig.util").root_pattern(
+                            ".eslintrc",
+                            ".eslintrc.js",
+                            ".eslintrc.cjs",
+                            ".eslintrc.json",
+                            ".eslintrc.yaml",
+                            ".eslintrc.yml",
+                            "eslint.config.js",
+                            "eslint.config.mjs",
+                            "eslint.config.cjs"
+                        )(fname) or require("lspconfig.util").find_git_ancestor(fname)
+                    end,
                 },
                 html = {},
                 jsonls = {},
@@ -73,23 +108,12 @@ return {
                 },
                 marksman = {},
                 pyright = {},
-                nil_ls = {
-                    settings = {
-                        ["nil"] = {
-                            formatting = {
-                                command = { "alejandra" }, -- Use Alejandra as the formatter
-                            },
-                        },
-                    },
-                },
-                sqls = {},
-                tailwindcss = {},
-                ts_ls = {},
                 yamlls = {},
             }
 
             -- Iterate over our servers and set them up
             for name, config in pairs(servers) do
+                print("Setting up: " .. name)
                 require("lspconfig")[name].setup({
                     cmd = config.cmd,
                     capabilities = capabilities,
