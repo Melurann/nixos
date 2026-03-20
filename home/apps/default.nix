@@ -1,6 +1,7 @@
 _: {
   imports = [
-    ./browsers
     ./music
+    ./browsers
+    ./communication
   ];
 }
