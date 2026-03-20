@@ -115,7 +115,7 @@
         "$mainMod, B, exec, ${lib.getExe pkgs.brave}"
         "$mainMod, D, exec, ${lib.getExe pkgs.vesktop}"
         "$mainMod, F, exec, ${lib.getExe pkgs.nautilus}"
-        "$mainMod, S, exec, ${lib.getExe pkgs.spotify}"
+        "$mainMod, S, exec, spotify" # spicetify wraps the spotify binary
         "$mainMod, P, exec, ${lib.getExe pkgs._1password-gui}"
 
         "$mainMod, V, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-mute   @DEFAULT_SINK@ toggle"
@@ -184,6 +184,10 @@
         # Other
         "$mainMod, ENTER, togglespecialworkspace"
         "$mainMod SHIFT, ENTER, movetoworkspace,special"
+
+        # Mirror & Extend
+        "$mainMod, TAB, exec, hyprctl keyword monitor HDMI-A-1, 1920x1080@60, 1920x0, 1, mirror, eDP-1"
+        "$mainMod SHIFT, TAB, exec, hyprctl keyword monitor HDMI-A-1, 1920x1080@60,1920x0,1"
       ];
 
       bindm = [

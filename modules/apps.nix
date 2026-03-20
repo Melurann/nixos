@@ -10,7 +10,6 @@
     ghidra
     burpsuite
     _1password-gui
-    spotify
     gimp
     # ciscoPacketTracer9
 
