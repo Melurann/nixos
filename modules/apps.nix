@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     vesktop
-    discord
+    # discord
     onlyoffice-desktopeditors
     brave
     ghostty
