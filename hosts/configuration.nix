@@ -8,7 +8,10 @@
     inputs.home-manager.nixosModules.default
 
     ./hardware-configuration.nix
+
     ../nixos
+    ../nixos/hardware/gpu/intel.nix
+
     ../modules
   ];
 
