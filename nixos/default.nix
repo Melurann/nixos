@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./apps
+    ./programs
     ./system
     ./customization
     ./hardware
