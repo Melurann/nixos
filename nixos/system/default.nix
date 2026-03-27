@@ -1,8 +1,10 @@
 _: {
   imports = [
     ./nix
-    ./localization.nix
+
     ./virtualisation.nix
+    ./localization.nix
+    ./bootloader.nix
     ./services.nix
     ./systemd.nix
     ./minicom.nix
