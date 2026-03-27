@@ -8,5 +8,6 @@ _: {
     ./services.nix
     ./systemd.nix
     ./minicom.nix
+    ./kernel.nix
   ];
 }

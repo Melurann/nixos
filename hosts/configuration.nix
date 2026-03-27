@@ -15,9 +15,6 @@
     ../modules
   ];
 
-  boot.blacklistedKernelModules = ["kvm" "kvm_intel" "kvm_amd"];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   users.users.${user.name} = {
     isNormalUser = true;
     extraGroups = ["wheel" "input" "vboxusers" "docker"];
