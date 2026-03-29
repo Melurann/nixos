@@ -5,13 +5,12 @@
   ...
 }: {
   imports = [
-    inputs.home-manager.nixosModules.default
-
     ./hardware-configuration.nix
 
     ../nixos
     ../nixos/hardware/gpu/intel.nix
 
+    ../nixos/programs/wm/niri.nix
     ../nixos/programs/wm/hyprland.nix
 
     ../modules

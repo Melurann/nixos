@@ -14,6 +14,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +37,7 @@
 
   outputs = inputs @ {
     nixpkgs,
+    niri-flake,
     home-manager,
     stylix,
     ...
@@ -53,6 +59,7 @@
         system = {
           os = "linux";
           desktop = "wayland";
+          compositor = "niri"; # "niri" or "hyprland"
         };
         theme = lib.getTheme "catppuccin-mocha";
         monitors = [
@@ -89,6 +96,7 @@
         };
 
         modules = [
+          niri-flake.nixosModules.niri
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {

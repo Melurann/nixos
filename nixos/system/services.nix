@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  meta,
+  ...
+}: {
   services = {
     # <https://wiki.nixos.org/wiki/Nautilus#Mount,_trash,_and_other_virtual_filesystems>
     gvfs.enable = true; # Mount, trash, and other functionalities
@@ -11,7 +15,15 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
+          command = ''
+            ${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd ${
+              if meta.system.compositor == "niri"
+              then "${pkgs.niri}/bin/niri"
+              else if meta.system.compositor == "hyprland"
+              then "${pkgs.hyprland}/bin/start-hyprland"
+              else abort "Unsupported compositor: ${meta.system.compositor}"
+            }
+          '';
           user = "greeter";
         };
       };
