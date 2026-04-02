@@ -14,7 +14,9 @@ _: {
         modules-left = [
           "custom/menu"
           "hyprland/workspaces"
+          "niri/workspaces"
           "hyprland/language"
+          "niri/language"
           "keyboard-state"
         ];
 
@@ -51,9 +53,25 @@ _: {
           };
         };
 
+        "niri/workspaces" = {
+          format = "{icon}";
+          current-only = false;
+          on-click = "niri msg action workspace {name}";
+          on-scroll-up = "niri msg action workspace next";
+          on-scroll-down = "niri msg action workspace previous";
+          presistent-workspaces = {
+            "*" = 3;
+          };
+        };
+
         "hyprland/language" = {
           format = "{shortDescription} ";
           on-click = "hyprctl switchxkblayout current next";
+        };
+
+        "niri/language" = {
+          format = "{shortDescription} ";
+          on-click = "niri msg action cycle-keyboard-layout";
         };
 
         "keyboard-state" = {
