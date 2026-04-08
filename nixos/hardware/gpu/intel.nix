@@ -3,6 +3,8 @@
 
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
+
     extraPackages = with pkgs; [
       # Required for modern Intel GPUs (Xe iGPU and ARC)
       intel-media-driver # VA-API (iHD) userspace
