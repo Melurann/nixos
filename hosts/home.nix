@@ -1,6 +1,12 @@
-{user, ...}: {
+{
+  user,
+  inputs,
+  ...
+}: {
   imports = [
     ../home
+
+    inputs.walker.homeManagerModules.default
   ];
 
   home = {

@@ -108,8 +108,8 @@
 
       bind = [
         # Launch Applications
-        "$mainMod, E, exec, ${lib.getExe pkgs.wofi} --show drun -I"
-        "$mainMod SHIFT, E, exec, ${lib.getExe pkgs.wofi} --show=run"
+        "$mainMod, E, exec,  ${lib.getExe pkgs.walker} --hideqa"
+        "$mainMod SHIFT, E, exec, ${lib.getExe pkgs.walker} -m runner --hideqa"
         "$mainMod SHIFT, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
         "$mainMod, Q, exec, ${lib.getExe pkgs.ghostty}"
         "$mainMod, B, exec, ${lib.getExe pkgs.brave}"
