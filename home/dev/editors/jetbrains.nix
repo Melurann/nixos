@@ -9,7 +9,6 @@ in {
     ((withPlugins "idea" [
       "com.github.copilot"
       "com.mallowigi"
-      "com.nekofar.milad.intellij.expo"
     ]).overrideAttrs {preferLocalBuild = true;})
   ];
 

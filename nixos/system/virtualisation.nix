@@ -4,8 +4,8 @@ _: {
 
     virtualbox = {
       host = {
-        enable = true;
-        enableExtensionPack = true;
+        enable = false;
+        enableExtensionPack = false;
       };
 
       guest = {
