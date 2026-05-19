@@ -8,7 +8,7 @@ _: {
     ./niri.nix
     ./avizo.nix
     ./walker.nix
-    ./nautilus.nix
+    # ./nautilus.nix # /nixos/programs
     ./grimblast.nix
   ];
 }
