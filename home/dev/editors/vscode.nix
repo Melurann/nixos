@@ -27,7 +27,11 @@
         jnoortheen.nix-ide
         kamadorueda.alejandra
 
-        # frontEnd
+        # c
+        ms-vscode.cpptools
+        ms-vscode.cpptools-extension-pack
+
+        # frontend
         bradlc.vscode-tailwindcss
 
         # get newest version etc. instead somehow
