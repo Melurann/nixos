@@ -9,6 +9,7 @@
     wireshark
     ghidra
     burpsuite
+    binaryninja-free
     _1password-gui
     gimp
     # ciscoPacketTracer9
