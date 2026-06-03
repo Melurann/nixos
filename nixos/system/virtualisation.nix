@@ -1,15 +1,15 @@
 _: {
   virtualisation = {
-    libvirtd.enable = false;
+    libvirtd.enable = true;
 
     virtualbox = {
       host = {
-        enable = false;
-        enableExtensionPack = false;
+        enable = true;
+        enableExtensionPack = true;
       };
 
       guest = {
-        enable = false;
+        enable = true;
         dragAndDrop = true;
         seamless = true;
         clipboard = true;
