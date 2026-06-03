@@ -5,7 +5,7 @@
 }: {
   programs.fastfetch = {
     enable = true;
-    package = pkgs.fastfetchMinimal;
+    package = pkgs.fastfetch.minimal;
 
     # Fastfetch configuration
     # See: https://github.com/fastfetch-cli/fastfetch/wiki/Configuration
