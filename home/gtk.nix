@@ -15,7 +15,6 @@ _: {
 
     gtk4 = {
       # <https://docs.gtk.org/gtk4/class.Settings.html#properties>
-      theme = null;
       extraConfig = {
         gtk-decoration-layout = "menu:none";
 
