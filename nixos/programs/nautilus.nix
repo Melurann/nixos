@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   nixpkgs.overlays = [
-    (final: prev: {
+    (_final: prev: {
       nautilus = prev.nautilus.overrideAttrs (nprev: {
         buildInputs =
           nprev.buildInputs
