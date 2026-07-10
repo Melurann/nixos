@@ -5,7 +5,7 @@
     enableFishIntegration = true;
     settings = {
       custom.nixos = {
-        command = "echo -n   25.11";
+        command = "echo -n   $(nixos-version | cut -d '.' -f1,2)";
         when = "true";
         format = "using [$output](bold blue)";
       };
