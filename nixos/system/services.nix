@@ -15,15 +15,14 @@
       enable = true;
       settings = {
         default_session = {
-          command = ''
-            ${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd ${
+          command = let
+            cmd =
               if meta.system.compositor == "niri"
               then "${pkgs.niri}/bin/niri"
               else if meta.system.compositor == "hyprland"
               then "${pkgs.hyprland}/bin/start-hyprland"
-              else abort "Unsupported compositor: ${meta.system.compositor}"
-            }
-          '';
+              else abort "Unsupported compositor: ${meta.system.compositor}";
+          in "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd ${cmd}";
           user = "greeter";
         };
       };
