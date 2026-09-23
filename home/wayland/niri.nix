@@ -152,7 +152,6 @@
         "Super+Shift+7".action.move-window-to-workspace = 7;
         "Super+Shift+8".action.move-window-to-workspace = 8;
         "Super+Shift+9".action.move-window-to-workspace = 9;
-        "Super+Shift+0".action.move-window-to-workspace = 10;
 
         # Screenshot
         "Print".action.screenshot = [];
