@@ -5,7 +5,7 @@
 }: {
   programs.fastfetch = {
     enable = true;
-    package = pkgs.fastfetch.minimal;
+    package = pkgs.fastfetch-unwrapped;
 
     # Fastfetch configuration
     # See: https://github.com/fastfetch-cli/fastfetch/wiki/Configuration
@@ -64,7 +64,7 @@
         ++ [
           {
             type = "shell";
-            key = " ╰─  ";
+            key = " ╰─ ";
             keyColor = "green";
           }
           {
@@ -74,34 +74,39 @@
           }
           {
             type = "display";
-            key = " ╭─ 󰍹 ";
+            key = " ╭─ 󰍹";
             keyColor = "blue";
             compactType = "original-with-refresh-rate";
           }
           {
             type = "cpu";
-            key = " ├─ 󰍛 ";
+            key = " ├─ 󰍛";
             keyColor = "blue";
+            format = "{1}";
           }
           {
             type = "gpu";
-            key = " ├─  ";
+            key = " ├─ ";
             keyColor = "blue";
+            format = "{2}";
           }
           {
             type = "disk";
-            key = " ├─ 󱛟 ";
+            key = " ├─ 󱛟";
             keyColor = "blue";
+            format = "{1} / {2} ({3})";
           }
           {
             type = "memory";
-            key = " ├─  ";
+            key = " ├─ ";
             keyColor = "blue";
+            format = "{1} / {2} ({3})";
           }
           {
             type = "battery";
             key = " ╰─ 󰂂";
             keyColor = "blue";
+            format = "{4} ({5})";
           }
           {
             type = "custom";
@@ -110,17 +115,17 @@
           }
           {
             type = "wm";
-            key = " ╭─  ";
+            key = " ╭─ ";
             keyColor = "yellow";
           }
           {
             type = "terminal";
-            key = " ├─  ";
+            key = " ├─ ";
             keyColor = "yellow";
           }
           {
             type = "font";
-            key = " ╰─  ";
+            key = " ╰─ ";
             keyColor = "yellow";
           }
           {
