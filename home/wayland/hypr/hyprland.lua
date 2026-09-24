@@ -214,6 +214,12 @@ hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("volumectl -u down"), { locked =
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("lightctl up"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("lightctl down"), { locked = true, repeating = true })
 
+-- Screenshot
+hl.bind("Print", hl.dsp.exec_cmd("grimblast save screen - | swappy -f -"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grimblast save area - | swappy -f -"))
+hl.bind("CTRL + ALT + Print", hl.dsp.exec_cmd("grimblast save active - | swappy -f -"))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("grimblast save output - | swappy -f -"))
+
 -- Lock & Window Control
 hl.bind(main_mod .. " + SHIFT + C", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(main_mod .. " + C", hl.dsp.window.close())
