@@ -1,9 +1,17 @@
-{self, ...}: {
+{
+  self,
+  lib,
+  ...
+}: {
   programs.noctalia = {
+    enable = true;
     settings = {
       theme = {
         mode = "dark";
-        source = "builtin";
+
+        # lib.mkForce is required here to override the default theme.source ("custom")
+        # set by the system-level recommendedServices option in NixOS configuration
+        source = lib.mkForce "builtin";
         builtin = "Catppuccin";
       };
 
