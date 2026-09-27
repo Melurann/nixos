@@ -45,7 +45,8 @@ local browser     = "brave"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar")
+    hl.exec_cmd("noctalia")
+    -- hl.exec_cmd("waybar")
     hl.exec_cmd("brave", { workspace = "1 silent" })
     hl.exec_cmd("ghostty", { workspace = "2 silent" })
 end)
@@ -64,9 +65,9 @@ end)
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in          = 4,
-        gaps_out         = 8,
-        border_size      = 1,
+        gaps_in          = 5,
+        gaps_out         = 10,
+        border_size      = 2,
 
         col              = {
             active_border   = "0xaa313244",
@@ -78,11 +79,9 @@ hl.config({
         layout           = "dwindle",
     },
 
-    cursor = { enable_hyprcursor = false, no_hardware_cursors = true, },
-
     decoration = {
-        rounding         = 10,
-        rounding_power   = 1,
+        rounding         = 20,
+        rounding_power   = 2,
 
         -- Change transparency of focused and unfocused windows
         active_opacity   = 0.7,
@@ -90,17 +89,26 @@ hl.config({
 
         blur             = {
             enabled = true,
-            size = 8,
-            passes = 3,
-            vibrancy = 0.2000,
+            size = 3,
+            passes = 2,
+            vibrancy = 0.1696,
             new_optimizations = true,
-            popups = true,
+            -- popups = true,
+        },
+
+        shadow           = {
+            enabled = true,
+            range = 4,
+            render_power = 3,
+            color = 0xee1a1a1a,
         },
     },
 
     animations = {
         enabled = true,
     },
+
+    cursor = { enable_hyprcursor = false, no_hardware_cursors = true, },
 })
 
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
@@ -187,6 +195,7 @@ hl.gesture({
 ---------------------
 
 local main_mod = "SUPER"
+local ipc = "noctalia msg"
 
 -- Launch Applications
 hl.bind(main_mod .. " + E", hl.dsp.exec_cmd(menu))
@@ -196,7 +205,7 @@ hl.bind(main_mod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(main_mod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(main_mod .. " + D", hl.dsp.exec_cmd("vesktop"))
 hl.bind(main_mod .. " + F", hl.dsp.exec_cmd(fileManager))
-hl.bind(main_mod .. " + S", hl.dsp.exec_cmd("spotify"))
+-- hl.bind(main_mod .. " + S", hl.dsp.exec_cmd("spotify"))
 hl.bind(main_mod .. " + P", hl.dsp.exec_cmd("1password"))
 
 -- System & Hardware Controls
@@ -207,12 +216,25 @@ hl.bind(main_mod .. " + SHIFT + B", hl.dsp.exec_cmd("blueman-manager"))
 hl.bind(main_mod .. " + W", hl.dsp.exec_cmd("nm-connection-editor"))
 
 -- XF86 / Function Keys
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volumectl toggle-mute"), { locked = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("volumectl -m toggle-mute"), { locked = true })
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("volumectl -u up"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("volumectl -u down"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("lightctl up"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("lightctl down"), { locked = true, repeating = true })
+-- hl.bind("XF86AudioMute", hl.dsp.exec_cmd("volumectl toggle-mute"), { locked = true })
+-- hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("volumectl -m toggle-mute"), { locked = true })
+-- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("volumectl -u up"), { locked = true, repeating = true })
+-- hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("volumectl -u down"), { locked = true, repeating = true })
+-- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("lightctl up"), { locked = true, repeating = true })
+-- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("lightctl down"), { locked = true, repeating = true })
+
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. "mic-mute"))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
+
+-- Noctalia Core binds
+hl.bind(main_mod .. " + Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+hl.bind(main_mod .. " + S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
+hl.bind(main_mod .. " + comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
 
 -- Screenshot
 hl.bind("Print", hl.dsp.exec_cmd("grimblast save screen - | swappy -f -"))
@@ -321,4 +343,21 @@ hl.window_rule({
         title = "(?i).*(youtube|netflix|twitch|prime video|disney\\+|plex|jellyfin).*",
     },
     opacity = "1.0 override",
+})
+
+hl.window_rule({
+    match = { class = "dev.noctalia.Noctalia" },
+    float = true,
+    size = { 1080, 920 },
+})
+
+hl.layer_rule({
+    name = "noctalia",
+    match = {
+        namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+    },
+    no_anim = true,
+    ignore_alpha = 0.5,
+    blur = true,
+    blur_popups = true,
 })

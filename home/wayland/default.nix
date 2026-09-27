@@ -4,6 +4,7 @@ _: {
     ./hypr
     ./waybar
     ./swaync
+    ./noctalia
 
     ./niri.nix
     ./avizo.nix

@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +53,7 @@
     niri-flake,
     home-manager,
     stylix,
+    noctalia,
     ...
   }: let
     system = "x86_64-linux";
@@ -107,6 +113,7 @@
           niri-flake.nixosModules.niri
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
+          noctalia.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = true;
