@@ -223,18 +223,18 @@ hl.bind(main_mod .. " + W", hl.dsp.exec_cmd("nm-connection-editor"))
 -- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("lightctl up"), { locked = true, repeating = true })
 -- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("lightctl down"), { locked = true, repeating = true })
 
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. "mic-mute"))
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. " volume-mute"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. " mic-mute"))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. " volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. " volume-down"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. " brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. " brightness-down"))
 
 -- Noctalia Core binds
-hl.bind(main_mod .. " + Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
-hl.bind(main_mod .. " + S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
-hl.bind(main_mod .. " + comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
-hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
+hl.bind(main_mod .. " + Space", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
+hl.bind(main_mod .. " + S", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center"))
+hl.bind(main_mod .. " + comma", hl.dsp.exec_cmd(ipc .. " settings-toggle"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. " window-switcher"))
 
 -- Screenshot
 hl.bind("Print", hl.dsp.exec_cmd("grimblast save screen - | swappy -f -"))
