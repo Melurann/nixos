@@ -1,8 +1,8 @@
 _: {
   imports = [
-    ./hyprpaper.nix
-    ./hypridle.nix
-    ./hyprlock.nix
+    # ./services/hyprpaper.nix
+    # ./services/hypridle.nix
+    # ./services/hyprlock.nix
   ];
 
   wayland.windowManager.hyprland = {
