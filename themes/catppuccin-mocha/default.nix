@@ -4,7 +4,7 @@
   polarity = "dark";
 
   cursor = {
-    name = "Catppuccin-Mocha-Light-Cursors";
+    name = "catppuccin-mocha-light-cursors";
     package = pkgs.catppuccin-cursors.mochaLight;
     size = 16;
   };
