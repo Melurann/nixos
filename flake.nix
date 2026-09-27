@@ -39,6 +39,8 @@
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
     };
+
+    titanium-proxy.url = "git+ssh://git@github.com/Melurann/titanium-proxy.git";
   };
 
   outputs = inputs @ {
