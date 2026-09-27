@@ -49,6 +49,7 @@
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
     niri-flake,
     home-manager,
@@ -97,7 +98,7 @@
         inherit system;
 
         specialArgs = {
-          inherit inputs;
+          inherit inputs user;
 
           meta = {
             hostname = host.name;
@@ -105,8 +106,6 @@
             monitors = host.monitors;
             theme = host.theme;
           };
-
-          inherit user;
         };
 
         modules = [
@@ -121,9 +120,8 @@
               backupFileExtension = "backup";
               users.${user.name} = import ./hosts/home.nix;
               extraSpecialArgs = {
-                inherit inputs;
+                inherit inputs user self;
                 meta = host;
-                inherit user;
               };
             };
           }
