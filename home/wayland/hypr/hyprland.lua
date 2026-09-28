@@ -243,7 +243,8 @@ hl.bind("CTRL + ALT + Print", hl.dsp.exec_cmd("grimblast save active - | swappy 
 hl.bind("CTRL + Print", hl.dsp.exec_cmd("grimblast save output - | swappy -f -"))
 
 -- Lock & Window Control
-hl.bind(main_mod .. " + SHIFT + C", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
+-- hl.bind(main_mod .. " + SHIFT + C", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
+hl.bind(main_mod .. " + SHIFT + C", hl.dsp.exec_cmd(ipc .. " session lock"))
 hl.bind(main_mod .. " + C", hl.dsp.window.close())
 
 -- Window Layout
