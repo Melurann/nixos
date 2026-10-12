@@ -66,26 +66,27 @@ return {
                 },
                 bashls = {},
                 cssls = {},
+                ts_ls = {},
                 eslint = {
-                    cmd = { "vscode-eslint-language-server", "--stdio" },
-                    settings = {
-                        format = true,                            -- Ensure ESLint can handle formatting
-                        workingDirectory = { mode = "location" }, -- Use the working directory where `eslint.config.js` resides
-                    },
-                    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-                    root_dir = function(fname)
-                        return require("lspconfig.util").root_pattern(
-                            ".eslintrc",
-                            ".eslintrc.js",
-                            ".eslintrc.cjs",
-                            ".eslintrc.json",
-                            ".eslintrc.yaml",
-                            ".eslintrc.yml",
-                            "eslint.config.js",
-                            "eslint.config.mjs",
-                            "eslint.config.cjs"
-                        )(fname) or require("lspconfig.util").find_git_ancestor(fname)
-                    end,
+                    -- cmd = { "vscode-eslint-language-server", "--stdio" },
+                    -- settings = {
+                    --     format = true,                            -- Ensure ESLint can handle formatting
+                    --     workingDirectory = { mode = "location" }, -- Use the working directory where `eslint.config.js` resides
+                    -- },
+                    -- filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+                    -- root_dir = function(fname)
+                    --     return require("lspconfig.util").root_pattern(
+                    --         ".eslintrc",
+                    --         ".eslintrc.js",
+                    --         ".eslintrc.cjs",
+                    --         ".eslintrc.json",
+                    --         ".eslintrc.yaml",
+                    --         ".eslintrc.yml",
+                    --         "eslint.config.js",
+                    --         "eslint.config.mjs",
+                    --         "eslint.config.cjs"
+                    --     )(fname) or require("lspconfig.util").find_git_ancestor(fname)
+                    -- end,
                 },
                 html = {},
                 jsonls = {},
