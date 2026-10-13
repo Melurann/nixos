@@ -74,18 +74,29 @@
         system = {
           os = "linux";
           desktop = "wayland";
-          compositor = "niri"; # "niri" or "hyprland"
+          compositor = "hyprland"; # "niri" or "hyprland"
         };
         theme = lib.getTheme "catppuccin-mocha";
         monitors = [
           {
-            name = "HDMI-A-1";
+            name = "eDP-1";
             dimensions = "1920x1080";
+            position = "0x0";
             scale = 1;
-            primary = true;
-            internal = true;
             framerate = 60;
             transform = 0;
+            primary = true;
+            internal = true;
+          }
+          {
+            name = "HDMI-A-1";
+            dimensions = "1920x1080";
+            position = "1920x0";
+            scale = 1;
+            framerate = 60;
+            transform = 0;
+            primary = false;
+            internal = false;
           }
         ];
       }
@@ -121,6 +132,7 @@
               users.${user.name} = import ./hosts/home.nix;
               extraSpecialArgs = {
                 inherit inputs user self;
+                nixlib = lib;
                 meta = host;
               };
             };
