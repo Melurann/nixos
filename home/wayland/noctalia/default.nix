@@ -1,15 +1,13 @@
 {
+  user,
   self,
   lib,
-  nixlib,
   meta,
-  user,
+  nixlib,
   ...
 }: let
   primaryMon = nixlib.getPrimaryMonitorObj meta.monitors;
   bounds = nixlib.getMonitorBounds primaryMon;
-
-  preset = import ./presets/preset-1 {inherit bounds primaryMon user;};
 in {
   programs.noctalia = {
     enable = true;
@@ -38,7 +36,9 @@ in {
         effects = true;
       };
 
-      lockscreen_widgets = preset.lockscreen_widgets;
+      lockscreen_widgets = import ./components/lockscreen-widgets.nix {
+        inherit user primaryMon bounds;
+      };
     };
   };
 }
