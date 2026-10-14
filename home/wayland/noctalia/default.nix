@@ -36,6 +36,10 @@ in {
         effects = true;
       };
 
+      bar = import ./components/bar.nix {
+        inherit primaryMon bounds;
+      };
+
       lockscreen_widgets = import ./components/lockscreen-widgets.nix {
         inherit user primaryMon bounds;
       };
