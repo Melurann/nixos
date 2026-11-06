@@ -1070,15 +1070,15 @@
       "locked": {
         "lastModified": 1790520627,
         "narHash": "sha256-bN3DxEweufDkK3VXRMkv/JxRnHopkhSyenFtS4vyJzQ=",
-        "ref": "refs/heads/main",
+        "owner": "Melurann",
+        "repo": "titanium-proxy",
         "rev": "6f0afd44f321d274f6d184eca66bd8b04f7dfdde",
-        "revCount": 5,
-        "type": "git",
-        "url": "ssh://git@github.com/Melurann/titanium-proxy.git"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/Melurann/titanium-proxy.git"
+        "owner": "Melurann",
+        "repo": "titanium-proxy",
+        "type": "github"
       }
     },
     "walker": {

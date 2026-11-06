@@ -45,7 +45,7 @@
       inputs.elephant.follows = "elephant";
     };
 
-    titanium-proxy.url = "git+ssh://git@github.com/Melurann/titanium-proxy.git";
+    titanium-proxy.url = "github:Melurann/titanium-proxy";
   };
 
   outputs = inputs @ {
