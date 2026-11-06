@@ -251,6 +251,7 @@ hl.bind(main_mod .. " + C", hl.dsp.window.close())
 hl.bind(main_mod .. " + SHIFT + P", hl.dsp.window.pseudo())
 hl.bind(main_mod .. " + M", hl.dsp.window.fullscreen({ mode = 1 }))
 hl.bind(main_mod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = 0 }))
+hl.bind(main_mod .. " + ALT + M", hl.dsp.exec_cmd("noctalia msg bar-toggle"))
 
 -- Move Focus (Vim & Arrow Keys)
 hl.bind(main_mod .. " + h", hl.dsp.focus({ direction = "left" }))
