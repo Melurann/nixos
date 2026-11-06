@@ -20,7 +20,7 @@ jobs:
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.NIX_GH_TOKEN }}
+            access-tokens = github.com=${{ secrets.NIX_GH_TOKE }}
 
       - run: nix flake update
       - uses: stefanzweifel/git-auto-commit-action@v4

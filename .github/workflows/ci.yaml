@@ -16,7 +16,7 @@ jobs:
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.NIX_GH_TOKEN }}
+            access-tokens = github.com=${{ secrets.NIX_GH_TOKE }}
       - run: nix run nixpkgs#alejandra -- -c .
 
   lint:
@@ -32,7 +32,7 @@ jobs:
           extra_nix_config: |
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.NIX_GH_TOKEN }}
+            access-tokens = github.com=${{ secrets.NIX_GH_TOKE }}
       - run: nix flake check
       - name: deadnix check
         run: nix run github:astro/deadnix -- -f
